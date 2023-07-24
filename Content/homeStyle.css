@@ -1,0 +1,48 @@
+﻿
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    border-radius: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.logo img {
+    width: 300px;
+    height: 300px;
+    margin-right: 600px;
+}
+
+.hotline {
+    display:flex;
+    margin-right: 60px;
+}
+
+nav ul {
+    display:flex;
+    list-style: none;
+    align-items: center;
+    color: black;
+}
+
+    nav ul li {
+        display: flex;
+        margin-right: 60px;
+        
+    }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            margin-top: 15px;
+        }
+
+            nav ul li a:hover {
+                color: #007bff;
+            }

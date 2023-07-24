@@ -1,0 +1,49 @@
+﻿@model CarBooking.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        #titleLogin {
+            padding-left: 35%;
+        }
+
+        #inputLogin {
+            width: 30%;
+            border-radius: 20px;
+            margin-left: 35%;
+            margin-top: 35px;
+        }
+    </style>
+</head>
+<div style="margin: 10px auto; width: 70%;">
+    <h2 style="text-align: center; padding-top: 30px">Đăng nhập</h2>
+    <h4 style="color:red; text-align:center">@ViewBag.ThongBao</h4>
+
+    @using (Html.BeginForm("login", "Home"))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="mb-3 mt-3">
+            <label id="titleLogin" for="name" class="form-label">Tên đăng nhập:</label>
+            <input type="text" class="form-control" id="inputLogin" name="TenDangNhap" required>
+        </div>
+        <div class="mb-3">
+            <label id="titleLogin" for="pwd" class="form-label">Mật khẩu:</label>
+            <input type="password" class="form-control" id="inputLogin" name="MatKhau" required>
+        </div>
+        <div style="text-align:center" class="mb-3">
+            Bạn chưa có tài khoản sao ?
+            <span>@Html.ActionLink("Đăng kí", "Register", "Home")</span>
+
+        </div>
+
+        <input style=" margin-left:45%;" type="submit" name="login" value="Đăng nhập" class="btn btn-primary " />
+
+    }
+
+</div>
+

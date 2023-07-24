@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f62c280dd474c53a4798ed54e788641" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="DBCarBookingModel.BC_DOANHSO" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.CT_BCDOANHSO" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.CT_DATXE" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.DANHGIA_PHANHOI" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.DATXE" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.DIADIEM" Width="1.5" PointX="3.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.DICHVU" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.HOADON" Width="1.5" PointX="11.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.KHUVUCLAMVIEC" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.LICHLAMVIEC" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.NHANVIEN" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.PHIEU_HUYDATXE" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.TAIXE" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.VI_VNS" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCarBookingModel.XE" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTBCDOANHSO_BCDOANHSO" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTBCDOANHSO_TAIXE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTDATXE_DATXE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTDATXE_DIADIEM" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTDATXE_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTDATXE_PDVu" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTDATXE_TAIXE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_CTDATXE_XE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_DANHGIAPHANHOI_DATXE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_DATXE_DIADIEM" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_DATXE_Xe" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_HOADON_DATXE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_PHIEUHUY_DATXE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_HOADON_PDVu" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_PHIEUHUY_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_ViVNS_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_TAIXE_KHUVUCLAMVIEC" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_TAIXE_LLVIEC" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.FK_TAIXE_Xe" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

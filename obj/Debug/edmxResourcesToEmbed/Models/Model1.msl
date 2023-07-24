@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBCarBookingModelStoreContainer" CdmEntityContainer="DBCarBookingEntities">
+    <EntitySetMapping Name="BC_DOANHSO">
+      <EntityTypeMapping TypeName="DBCarBookingModel.BC_DOANHSO">
+        <MappingFragment StoreEntitySet="BC_DOANHSO">
+          <ScalarProperty Name="BC_ID" ColumnName="BC_ID" />
+          <ScalarProperty Name="TongDoanhSo" ColumnName="TongDoanhSo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_BCDOANHSO">
+      <EntityTypeMapping TypeName="DBCarBookingModel.CT_BCDOANHSO">
+        <MappingFragment StoreEntitySet="CT_BCDOANHSO">
+          <ScalarProperty Name="CTBC_ID" ColumnName="CTBC_ID" />
+          <ScalarProperty Name="BC_ID" ColumnName="BC_ID" />
+          <ScalarProperty Name="TaiXeID" ColumnName="TaiXeID" />
+          <ScalarProperty Name="TyLe" ColumnName="TyLe" />
+          <ScalarProperty Name="TongGiaTri" ColumnName="TongGiaTri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_DATXE">
+      <EntityTypeMapping TypeName="DBCarBookingModel.CT_DATXE">
+        <MappingFragment StoreEntitySet="CT_DATXE">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="CT_DatXeID" ColumnName="CT_DatXeID" />
+          <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+          <ScalarProperty Name="XeID" ColumnName="XeID" />
+          <ScalarProperty Name="TaiXeID" ColumnName="TaiXeID" />
+          <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />
+          <ScalarProperty Name="KhID" ColumnName="KhID" />
+          <ScalarProperty Name="DVuID" ColumnName="DVuID" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DANHGIA_PHANHOI">
+      <EntityTypeMapping TypeName="DBCarBookingModel.DANHGIA_PHANHOI">
+        <MappingFragment StoreEntitySet="DANHGIA_PHANHOI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="PhanHoi" ColumnName="PhanHoi" />
+          <ScalarProperty Name="NgayDanhGia" ColumnName="NgayDanhGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATXEs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.DATXE">
+        <MappingFragment StoreEntitySet="DATXE">
+          <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+          <ScalarProperty Name="XeID" ColumnName="XeID" />
+          <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIADIEMs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.DIADIEM">
+        <MappingFragment StoreEntitySet="DIADIEM">
+          <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />
+          <ScalarProperty Name="DiemXuatPhat" ColumnName="DiemXuatPhat" />
+          <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DICHVUs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.DICHVU">
+        <MappingFragment StoreEntitySet="DICHVU">
+          <ScalarProperty Name="DVuID" ColumnName="DVuID" />
+          <ScalarProperty Name="TenDV" ColumnName="TenDV" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="LoaiDichVu" ColumnName="LoaiDichVu" />
+          <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.HOADON">
+        <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
+          <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+          <ScalarProperty Name="DVuID" ColumnName="DVuID" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+          <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="KhID" ColumnName="KhID" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHUVUCLAMVIECs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.KHUVUCLAMVIEC">
+        <MappingFragment StoreEntitySet="KHUVUCLAMVIEC">
+          <ScalarProperty Name="KhuVucID" ColumnName="KhuVucID" />
+          <ScalarProperty Name="TenKhuVuc" ColumnName="TenKhuVuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICHLAMVIECs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.LICHLAMVIEC">
+        <MappingFragment StoreEntitySet="LICHLAMVIEC">
+          <ScalarProperty Name="LLViecID" ColumnName="LLViecID" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <ScalarProperty Name="ThoiGianBD" ColumnName="ThoiGianBD" />
+          <ScalarProperty Name="ThoiGianKT" ColumnName="ThoiGianKT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="NhanVienID" ColumnName="NhanVienID" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEU_HUYDATXE">
+      <EntityTypeMapping TypeName="DBCarBookingModel.PHIEU_HUYDATXE">
+        <MappingFragment StoreEntitySet="PHIEU_HUYDATXE">
+          <ScalarProperty Name="PhieuID" ColumnName="PhieuID" />
+          <ScalarProperty Name="KhID" ColumnName="KhID" />
+          <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+          <ScalarProperty Name="ThoiGianHuy" ColumnName="ThoiGianHuy" />
+          <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBCarBookingModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIXEs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.TAIXE">
+        <MappingFragment StoreEntitySet="TAIXE">
+          <ScalarProperty Name="TaiXeID" ColumnName="TaiXeID" />
+          <ScalarProperty Name="KhuVucID" ColumnName="KhuVucID" />
+          <ScalarProperty Name="LLViecID" ColumnName="LLViecID" />
+          <ScalarProperty Name="XeID" ColumnName="XeID" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoCuocXe" ColumnName="SoCuocXe" />
+          <ScalarProperty Name="Luong" ColumnName="Luong" />
+          <ScalarProperty Name="TinhTrangHopDong" ColumnName="TinhTrangHopDong" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VI_VNS">
+      <EntityTypeMapping TypeName="DBCarBookingModel.VI_VNS">
+        <MappingFragment StoreEntitySet="VI_VNS">
+          <ScalarProperty Name="ViID" ColumnName="ViID" />
+          <ScalarProperty Name="KhID" ColumnName="KhID" />
+          <ScalarProperty Name="SoDu" ColumnName="SoDu" />
+          <ScalarProperty Name="ThoiGianTao" ColumnName="ThoiGianTao" />
+          <ScalarProperty Name="ThoiGianGiaoDich" ColumnName="ThoiGianGiaoDich" />
+          <ScalarProperty Name="SoTienGiaoDich" ColumnName="SoTienGiaoDich" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XEs">
+      <EntityTypeMapping TypeName="DBCarBookingModel.XE">
+        <MappingFragment StoreEntitySet="XE">
+          <ScalarProperty Name="XeID" ColumnName="XeID" />
+          <ScalarProperty Name="TenXe" ColumnName="TenXe" />
+          <ScalarProperty Name="MauXe" ColumnName="MauXe" />
+          <ScalarProperty Name="LoaiXe" ColumnName="LoaiXe" />
+          <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+          <ScalarProperty Name="GiaThue" ColumnName="GiaThue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

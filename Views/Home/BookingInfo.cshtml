@@ -1,0 +1,89 @@
+﻿@model CarBooking.Models.DATXE
+
+@{
+    ViewBag.Title = "BookingInfo";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    <link rel="stylesheet" href="~/Content/stylePro.css" />
+}
+
+<div class="parent-container">
+    <div class="form-container">
+        @using (Html.BeginForm("BookingInfo", "Home", FormMethod.Post))
+        {
+            <h2>Thông tin cá nhân</h2>
+
+            <div class="form-group">
+                <label for="hoTen">Họ và tên:</label>
+                <input type="text" id="hoTen" name="HoTen" required>
+            </div>
+
+            <div class="form-group">
+                <label for="soDienThoai">Số điện thoại:</label>
+                <input type="tel" id="soDienThoai" name="Sdt" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ghiChu">Ghi chú:</label>
+                <textarea id="ghiChu" name="ghiChu" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Phương thức thanh toán:</label><br>
+                <input type="radio" id="zaloPay" name="phuongThucThanhToan" value="ZaloPay" required>
+                <label for="zaloPay">ZaloPay</label><br>
+
+                <input type="radio" id="momo" name="phuongThucThanhToan" value="Momo" required>
+                <label for="momo">Momo</label><br>
+
+                <input type="radio" id="viVNS" name="phuongThucThanhToan" value="ViVNS" required>
+                <label for="viVNS">Ví VNS</label><br>
+
+                <input type="radio" id="tienMat" name="phuongThucThanhToan" value="TienMat" required>
+                <label for="tienMat">Tiền mặt</label><br>
+            </div>
+
+            <input type="submit" value="Xác nhận">
+        }
+
+    </div>
+
+
+    <div class="form-container">
+        @using (Html.BeginForm("ProcessConfirmation", "Home", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.DatXeID)
+            <h2>Booking Details</h2>
+            <div class="form-group">
+                <label for="from">Điểm đi:</label>
+                <input type="text" id="from" name="DiemXuatPhat" value="@Model.DIADIEM.DiemXuatPhat" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="to">Điểm đến:</label>
+                <input type="text" id="to" name="DiemDen" value="@Model.DIADIEM.DiemDen" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="datetime">Thời gian:</label>
+                <input type="datetime-local" id="datetime" name="ThoiGian" value="@Model.ThoiGian" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="carType">Loại xe:</label>
+                <input type="text" id="carType" name="LoaiXe" value="@Model.XE.LoaiXe" readonly>
+            </div>
+
+            <input>
+        }
+
+    </div>
+</div>
+
+
+
+

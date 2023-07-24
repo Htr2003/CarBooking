@@ -1,0 +1,40 @@
+﻿@model CarBooking.Models.DATXE
+
+@{
+    ViewBag.Title = "FormCarBooking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <link rel="stylesheet" href="~/Content/formCBstyle.css" />
+}
+
+<h1>Dat xe nhanh</h1>
+@using (Html.BeginForm("FormCarBooking", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="from">Điểm đi:</label>
+        <input type="text" id="from" name="DiemXuatPhat" required>
+    </div>
+
+    <div class="form-group">
+        <label for="to">Điểm đến:</label>
+        <input type="text" id="to" name="DiemDen" required>
+    </div>
+
+    <div class="form-group">
+        <label for="datetime">Thời gian:</label>
+        <input type="datetime-local" id="datetime" name="datetime" required>
+        @Html.ValidationMessageFor(m => m.ThoiGian)
+    </div>
+
+    <div class="form-group">
+        <label for="carType">Loại xe:</label>
+        <select id="carType" name="LoaiXe" required>
+            <option value="xe4">Xe 4 chỗ</option>
+            <option value="xe7">Xe 7 chỗ</option>
+            <option value="xe4cho">xe du lich</option>
+        </select>
+    </div>
+
+    <input style="border-radius:21px;" type="submit" value="Đặt xe">
+}
+

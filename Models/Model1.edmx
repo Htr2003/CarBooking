@@ -1,0 +1,1288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBCarBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BC_DOANHSO">
+          <Key>
+            <PropertyRef Name="BC_ID" />
+          </Key>
+          <Property Name="BC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TongDoanhSo" Type="int" />
+        </EntityType>
+        <EntityType Name="CT_BCDOANHSO">
+          <Key>
+            <PropertyRef Name="CTBC_ID" />
+          </Key>
+          <Property Name="CTBC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BC_ID" Type="int" />
+          <Property Name="TaiXeID" Type="int" />
+          <Property Name="TyLe" Type="int" />
+          <Property Name="TongGiaTri" Type="int" />
+        </EntityType>
+        <EntityType Name="CT_DATXE">
+          <Key>
+            <PropertyRef Name="CT_DatXeID" />
+          </Key>
+          <Property Name="CT_DatXeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatXeID" Type="int" />
+          <Property Name="XeID" Type="int" />
+          <Property Name="TaiXeID" Type="int" />
+          <Property Name="DDiemID" Type="int" />
+          <Property Name="KhID" Type="int" />
+          <Property Name="DVuID" Type="int" />
+          <Property Name="TongTien" Type="int" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="DANHGIA_PHANHOI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatXeID" Type="int" />
+          <Property Name="DanhGia" Type="char" MaxLength="6" />
+          <Property Name="PhanHoi" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayDanhGia" Type="date" />
+        </EntityType>
+        <EntityType Name="DATXE">
+          <Key>
+            <PropertyRef Name="DatXeID" />
+          </Key>
+          <Property Name="DatXeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="XeID" Type="int" />
+          <Property Name="DDiemID" Type="int" />
+          <Property Name="ThoiGian" Type="date" />
+        </EntityType>
+        <EntityType Name="DIADIEM">
+          <Key>
+            <PropertyRef Name="DDiemID" />
+          </Key>
+          <Property Name="DDiemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiemXuatPhat" Type="nvarchar" MaxLength="150" />
+          <Property Name="DiemDen" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="DICHVU">
+          <Key>
+            <PropertyRef Name="DVuID" />
+          </Key>
+          <Property Name="DVuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDV" Type="nvarchar" MaxLength="50" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+          <Property Name="LoaiDichVu" Type="nvarchar" MaxLength="30" />
+          <Property Name="SoTien" Type="int" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="HoaDonID" />
+          </Key>
+          <Property Name="HoaDonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatXeID" Type="int" />
+          <Property Name="DVuID" Type="int" />
+          <Property Name="TongTien" Type="int" />
+          <Property Name="NgayXuat" Type="date" />
+          <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="KhID" />
+          </Key>
+          <Property Name="KhID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
+          <Property Name="Sdt" Type="char" MaxLength="11" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="20" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="KHUVUCLAMVIEC">
+          <Key>
+            <PropertyRef Name="KhuVucID" />
+          </Key>
+          <Property Name="KhuVucID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKhuVuc" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LICHLAMVIEC">
+          <Key>
+            <PropertyRef Name="LLViecID" />
+          </Key>
+          <Property Name="LLViecID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ngay" Type="date" />
+          <Property Name="ThoiGianBD" Type="int" />
+          <Property Name="ThoiGianKT" Type="int" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="NhanVienID" />
+          </Key>
+          <Property Name="NhanVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Sdt" Type="char" MaxLength="11" />
+          <Property Name="VaiTro" Type="nvarchar" MaxLength="40" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="20" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="PHIEU_HUYDATXE">
+          <Key>
+            <PropertyRef Name="PhieuID" />
+          </Key>
+          <Property Name="PhieuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KhID" Type="int" />
+          <Property Name="DatXeID" Type="int" />
+          <Property Name="ThoiGianHuy" Type="date" />
+          <Property Name="LyDo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TAIXE">
+          <Key>
+            <PropertyRef Name="TaiXeID" />
+          </Key>
+          <Property Name="TaiXeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KhuVucID" Type="int" />
+          <Property Name="LLViecID" Type="int" />
+          <Property Name="XeID" Type="int" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="Sdt" Type="char" MaxLength="11" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="SoCuocXe" Type="tinyint" />
+          <Property Name="Luong" Type="int" />
+          <Property Name="TinhTrangHopDong" Type="bit" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="20" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="VI_VNS">
+          <Key>
+            <PropertyRef Name="ViID" />
+          </Key>
+          <Property Name="ViID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KhID" Type="int" />
+          <Property Name="SoDu" Type="int" />
+          <Property Name="ThoiGianTao" Type="date" />
+          <Property Name="ThoiGianGiaoDich" Type="date" />
+          <Property Name="SoTienGiaoDich" Type="int" />
+        </EntityType>
+        <EntityType Name="XE">
+          <Key>
+            <PropertyRef Name="XeID" />
+          </Key>
+          <Property Name="XeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenXe" Type="varchar" MaxLength="20" />
+          <Property Name="MauXe" Type="nvarchar" MaxLength="10" />
+          <Property Name="LoaiXe" Type="nvarchar" MaxLength="20" />
+          <Property Name="BienSoXe" Type="varchar" MaxLength="20" />
+          <Property Name="GiaThue" Type="int" />
+        </EntityType>
+        <Association Name="FK_CTBCDOANHSO_BCDOANHSO">
+          <End Role="BC_DOANHSO" Type="Self.BC_DOANHSO" Multiplicity="0..1" />
+          <End Role="CT_BCDOANHSO" Type="Self.CT_BCDOANHSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BC_DOANHSO">
+              <PropertyRef Name="BC_ID" />
+            </Principal>
+            <Dependent Role="CT_BCDOANHSO">
+              <PropertyRef Name="BC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTBCDOANHSO_TAIXE">
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
+          <End Role="CT_BCDOANHSO" Type="Self.CT_BCDOANHSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIXE">
+              <PropertyRef Name="TaiXeID" />
+            </Principal>
+            <Dependent Role="CT_BCDOANHSO">
+              <PropertyRef Name="TaiXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_DIADIEM">
+          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEM">
+              <PropertyRef Name="DDiemID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="DDiemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_PDVu">
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="DVuID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="DVuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_TAIXE">
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIXE">
+              <PropertyRef Name="TaiXeID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="TaiXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_XE">
+          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="XeID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="XeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DANHGIAPHANHOI_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="DANHGIA_PHANHOI" Type="Self.DANHGIA_PHANHOI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="DANHGIA_PHANHOI">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATXE_DIADIEM">
+          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="0..1" />
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEM">
+              <PropertyRef Name="DDiemID" />
+            </Principal>
+            <Dependent Role="DATXE">
+              <PropertyRef Name="DDiemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATXE_Xe">
+          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="XeID" />
+            </Principal>
+            <Dependent Role="DATXE">
+              <PropertyRef Name="XeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON_PDVu">
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="DVuID" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="DVuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEUHUY_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="PHIEU_HUYDATXE" Type="Self.PHIEU_HUYDATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="PHIEU_HUYDATXE">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEUHUY_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="PHIEU_HUYDATXE" Type="Self.PHIEU_HUYDATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="PHIEU_HUYDATXE">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAIXE_KHUVUCLAMVIEC">
+          <End Role="KHUVUCLAMVIEC" Type="Self.KHUVUCLAMVIEC" Multiplicity="0..1" />
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHUVUCLAMVIEC">
+              <PropertyRef Name="KhuVucID" />
+            </Principal>
+            <Dependent Role="TAIXE">
+              <PropertyRef Name="KhuVucID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAIXE_LLVIEC">
+          <End Role="LICHLAMVIEC" Type="Self.LICHLAMVIEC" Multiplicity="0..1" />
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LICHLAMVIEC">
+              <PropertyRef Name="LLViecID" />
+            </Principal>
+            <Dependent Role="TAIXE">
+              <PropertyRef Name="LLViecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAIXE_Xe">
+          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="XeID" />
+            </Principal>
+            <Dependent Role="TAIXE">
+              <PropertyRef Name="XeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViVNS_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="VI_VNS" Type="Self.VI_VNS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="VI_VNS">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBCarBookingModelStoreContainer">
+          <EntitySet Name="BC_DOANHSO" EntityType="Self.BC_DOANHSO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_BCDOANHSO" EntityType="Self.CT_BCDOANHSO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DATXE" EntityType="Self.CT_DATXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DANHGIA_PHANHOI" EntityType="Self.DANHGIA_PHANHOI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATXE" EntityType="Self.DATXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIADIEM" EntityType="Self.DIADIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DICHVU" EntityType="Self.DICHVU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHUVUCLAMVIEC" EntityType="Self.KHUVUCLAMVIEC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LICHLAMVIEC" EntityType="Self.LICHLAMVIEC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHIEU_HUYDATXE" EntityType="Self.PHIEU_HUYDATXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAIXE" EntityType="Self.TAIXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VI_VNS" EntityType="Self.VI_VNS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XE" EntityType="Self.XE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CTBCDOANHSO_BCDOANHSO" Association="Self.FK_CTBCDOANHSO_BCDOANHSO">
+            <End Role="BC_DOANHSO" EntitySet="BC_DOANHSO" />
+            <End Role="CT_BCDOANHSO" EntitySet="CT_BCDOANHSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTBCDOANHSO_TAIXE" Association="Self.FK_CTBCDOANHSO_TAIXE">
+            <End Role="TAIXE" EntitySet="TAIXE" />
+            <End Role="CT_BCDOANHSO" EntitySet="CT_BCDOANHSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_DATXE" Association="Self.FK_CTDATXE_DATXE">
+            <End Role="DATXE" EntitySet="DATXE" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_DIADIEM" Association="Self.FK_CTDATXE_DIADIEM">
+            <End Role="DIADIEM" EntitySet="DIADIEM" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_KHACHHANG" Association="Self.FK_CTDATXE_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_PDVu" Association="Self.FK_CTDATXE_PDVu">
+            <End Role="DICHVU" EntitySet="DICHVU" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_TAIXE" Association="Self.FK_CTDATXE_TAIXE">
+            <End Role="TAIXE" EntitySet="TAIXE" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_XE" Association="Self.FK_CTDATXE_XE">
+            <End Role="XE" EntitySet="XE" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DANHGIAPHANHOI_DATXE" Association="Self.FK_DANHGIAPHANHOI_DATXE">
+            <End Role="DATXE" EntitySet="DATXE" />
+            <End Role="DANHGIA_PHANHOI" EntitySet="DANHGIA_PHANHOI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATXE_DIADIEM" Association="Self.FK_DATXE_DIADIEM">
+            <End Role="DIADIEM" EntitySet="DIADIEM" />
+            <End Role="DATXE" EntitySet="DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATXE_Xe" Association="Self.FK_DATXE_Xe">
+            <End Role="XE" EntitySet="XE" />
+            <End Role="DATXE" EntitySet="DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON_DATXE" Association="Self.FK_HOADON_DATXE">
+            <End Role="DATXE" EntitySet="DATXE" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON_PDVu" Association="Self.FK_HOADON_PDVu">
+            <End Role="DICHVU" EntitySet="DICHVU" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEUHUY_DATXE" Association="Self.FK_PHIEUHUY_DATXE">
+            <End Role="DATXE" EntitySet="DATXE" />
+            <End Role="PHIEU_HUYDATXE" EntitySet="PHIEU_HUYDATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEUHUY_KHACHHANG" Association="Self.FK_PHIEUHUY_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="PHIEU_HUYDATXE" EntitySet="PHIEU_HUYDATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAIXE_KHUVUCLAMVIEC" Association="Self.FK_TAIXE_KHUVUCLAMVIEC">
+            <End Role="KHUVUCLAMVIEC" EntitySet="KHUVUCLAMVIEC" />
+            <End Role="TAIXE" EntitySet="TAIXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAIXE_LLVIEC" Association="Self.FK_TAIXE_LLVIEC">
+            <End Role="LICHLAMVIEC" EntitySet="LICHLAMVIEC" />
+            <End Role="TAIXE" EntitySet="TAIXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAIXE_Xe" Association="Self.FK_TAIXE_Xe">
+            <End Role="XE" EntitySet="XE" />
+            <End Role="TAIXE" EntitySet="TAIXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViVNS_KHACHHANG" Association="Self.FK_ViVNS_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="VI_VNS" EntitySet="VI_VNS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBCarBookingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BC_DOANHSO">
+          <Key>
+            <PropertyRef Name="BC_ID" />
+          </Key>
+          <Property Name="BC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TongDoanhSo" Type="Int32" />
+          <NavigationProperty Name="CT_BCDOANHSO" Relationship="Self.FK_CTBCDOANHSO_BCDOANHSO" FromRole="BC_DOANHSO" ToRole="CT_BCDOANHSO" />
+        </EntityType>
+        <EntityType Name="CT_BCDOANHSO">
+          <Key>
+            <PropertyRef Name="CTBC_ID" />
+          </Key>
+          <Property Name="CTBC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BC_ID" Type="Int32" />
+          <Property Name="TaiXeID" Type="Int32" />
+          <Property Name="TyLe" Type="Int32" />
+          <Property Name="TongGiaTri" Type="Int32" />
+          <NavigationProperty Name="BC_DOANHSO" Relationship="Self.FK_CTBCDOANHSO_BCDOANHSO" FromRole="CT_BCDOANHSO" ToRole="BC_DOANHSO" />
+          <NavigationProperty Name="TAIXE" Relationship="Self.FK_CTBCDOANHSO_TAIXE" FromRole="CT_BCDOANHSO" ToRole="TAIXE" />
+        </EntityType>
+        <EntityType Name="CT_DATXE">
+          <Key>
+            <PropertyRef Name="CT_DatXeID" />
+          </Key>
+          <Property Name="CT_DatXeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatXeID" Type="Int32" />
+          <Property Name="XeID" Type="Int32" />
+          <Property Name="TaiXeID" Type="Int32" />
+          <Property Name="DDiemID" Type="Int32" />
+          <Property Name="KhID" Type="Int32" />
+          <Property Name="DVuID" Type="Int32" />
+          <Property Name="TongTien" Type="Int32" />
+          <NavigationProperty Name="DATXE" Relationship="Self.FK_CTDATXE_DATXE" FromRole="CT_DATXE" ToRole="DATXE" />
+          <NavigationProperty Name="DIADIEM" Relationship="Self.FK_CTDATXE_DIADIEM" FromRole="CT_DATXE" ToRole="DIADIEM" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_CTDATXE_KHACHHANG" FromRole="CT_DATXE" ToRole="KHACHHANG" />
+          <NavigationProperty Name="DICHVU" Relationship="Self.FK_CTDATXE_PDVu" FromRole="CT_DATXE" ToRole="DICHVU" />
+          <NavigationProperty Name="TAIXE" Relationship="Self.FK_CTDATXE_TAIXE" FromRole="CT_DATXE" ToRole="TAIXE" />
+          <NavigationProperty Name="XE" Relationship="Self.FK_CTDATXE_XE" FromRole="CT_DATXE" ToRole="XE" />
+          <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DANHGIA_PHANHOI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatXeID" Type="Int32" />
+          <Property Name="DanhGia" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PhanHoi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDanhGia" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DATXE" Relationship="Self.FK_DANHGIAPHANHOI_DATXE" FromRole="DANHGIA_PHANHOI" ToRole="DATXE" />
+        </EntityType>
+        <EntityType Name="DATXE">
+          <Key>
+            <PropertyRef Name="DatXeID" />
+          </Key>
+          <Property Name="DatXeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="XeID" Type="Int32" />
+          <Property Name="DDiemID" Type="Int32" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_DATXE" FromRole="DATXE" ToRole="CT_DATXE" />
+          <NavigationProperty Name="DANHGIA_PHANHOI" Relationship="Self.FK_DANHGIAPHANHOI_DATXE" FromRole="DATXE" ToRole="DANHGIA_PHANHOI" />
+          <NavigationProperty Name="DIADIEM" Relationship="Self.FK_DATXE_DIADIEM" FromRole="DATXE" ToRole="DIADIEM" />
+          <NavigationProperty Name="XE" Relationship="Self.FK_DATXE_Xe" FromRole="DATXE" ToRole="XE" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_DATXE" FromRole="DATXE" ToRole="HOADON" />
+          <NavigationProperty Name="PHIEU_HUYDATXE" Relationship="Self.FK_PHIEUHUY_DATXE" FromRole="DATXE" ToRole="PHIEU_HUYDATXE" />
+        </EntityType>
+        <EntityType Name="DIADIEM">
+          <Key>
+            <PropertyRef Name="DDiemID" />
+          </Key>
+          <Property Name="DDiemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiemXuatPhat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DiemDen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_DIADIEM" FromRole="DIADIEM" ToRole="CT_DATXE" />
+          <NavigationProperty Name="DATXEs" Relationship="Self.FK_DATXE_DIADIEM" FromRole="DIADIEM" ToRole="DATXE" />
+        </EntityType>
+        <EntityType Name="DICHVU">
+          <Key>
+            <PropertyRef Name="DVuID" />
+          </Key>
+          <Property Name="DVuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LoaiDichVu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SoTien" Type="Int32" />
+          <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_PDVu" FromRole="DICHVU" ToRole="CT_DATXE" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_PDVu" FromRole="DICHVU" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="HoaDonID" />
+          </Key>
+          <Property Name="HoaDonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatXeID" Type="Int32" />
+          <Property Name="DVuID" Type="Int32" />
+          <Property Name="TongTien" Type="Int32" />
+          <Property Name="NgayXuat" Type="DateTime" Precision="0" />
+          <Property Name="PhuongThucThanhToan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DATXE" Relationship="Self.FK_HOADON_DATXE" FromRole="HOADON" ToRole="DATXE" />
+          <NavigationProperty Name="DICHVU" Relationship="Self.FK_HOADON_PDVu" FromRole="HOADON" ToRole="DICHVU" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="KhID" />
+          </Key>
+          <Property Name="KhID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_KHACHHANG" FromRole="KHACHHANG" ToRole="CT_DATXE" />
+          <NavigationProperty Name="PHIEU_HUYDATXE" Relationship="Self.FK_PHIEUHUY_KHACHHANG" FromRole="KHACHHANG" ToRole="PHIEU_HUYDATXE" />
+          <NavigationProperty Name="VI_VNS" Relationship="Self.FK_ViVNS_KHACHHANG" FromRole="KHACHHANG" ToRole="VI_VNS" />
+        </EntityType>
+        <EntityType Name="KHUVUCLAMVIEC">
+          <Key>
+            <PropertyRef Name="KhuVucID" />
+          </Key>
+          <Property Name="KhuVucID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKhuVuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TAIXEs" Relationship="Self.FK_TAIXE_KHUVUCLAMVIEC" FromRole="KHUVUCLAMVIEC" ToRole="TAIXE" />
+        </EntityType>
+        <EntityType Name="LICHLAMVIEC">
+          <Key>
+            <PropertyRef Name="LLViecID" />
+          </Key>
+          <Property Name="LLViecID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ngay" Type="DateTime" Precision="0" />
+          <Property Name="ThoiGianBD" Type="Int32" />
+          <Property Name="ThoiGianKT" Type="Int32" />
+          <NavigationProperty Name="TAIXEs" Relationship="Self.FK_TAIXE_LLVIEC" FromRole="LICHLAMVIEC" ToRole="TAIXE" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="NhanVienID" />
+          </Key>
+          <Property Name="NhanVienID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="VaiTro" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PHIEU_HUYDATXE">
+          <Key>
+            <PropertyRef Name="PhieuID" />
+          </Key>
+          <Property Name="PhieuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KhID" Type="Int32" />
+          <Property Name="DatXeID" Type="Int32" />
+          <Property Name="ThoiGianHuy" Type="DateTime" Precision="0" />
+          <Property Name="LyDo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DATXE" Relationship="Self.FK_PHIEUHUY_DATXE" FromRole="PHIEU_HUYDATXE" ToRole="DATXE" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_PHIEUHUY_KHACHHANG" FromRole="PHIEU_HUYDATXE" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TAIXE">
+          <Key>
+            <PropertyRef Name="TaiXeID" />
+          </Key>
+          <Property Name="TaiXeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KhuVucID" Type="Int32" />
+          <Property Name="LLViecID" Type="Int32" />
+          <Property Name="XeID" Type="Int32" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SoCuocXe" Type="Byte" />
+          <Property Name="Luong" Type="Int32" />
+          <Property Name="TinhTrangHopDong" Type="Boolean" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CT_BCDOANHSO" Relationship="Self.FK_CTBCDOANHSO_TAIXE" FromRole="TAIXE" ToRole="CT_BCDOANHSO" />
+          <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_TAIXE" FromRole="TAIXE" ToRole="CT_DATXE" />
+          <NavigationProperty Name="KHUVUCLAMVIEC" Relationship="Self.FK_TAIXE_KHUVUCLAMVIEC" FromRole="TAIXE" ToRole="KHUVUCLAMVIEC" />
+          <NavigationProperty Name="LICHLAMVIEC" Relationship="Self.FK_TAIXE_LLVIEC" FromRole="TAIXE" ToRole="LICHLAMVIEC" />
+          <NavigationProperty Name="XE" Relationship="Self.FK_TAIXE_Xe" FromRole="TAIXE" ToRole="XE" />
+        </EntityType>
+        <EntityType Name="VI_VNS">
+          <Key>
+            <PropertyRef Name="ViID" />
+          </Key>
+          <Property Name="ViID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KhID" Type="Int32" />
+          <Property Name="SoDu" Type="Int32" />
+          <Property Name="ThoiGianTao" Type="DateTime" Precision="0" />
+          <Property Name="ThoiGianGiaoDich" Type="DateTime" Precision="0" />
+          <Property Name="SoTienGiaoDich" Type="Int32" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_ViVNS_KHACHHANG" FromRole="VI_VNS" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="XE">
+          <Key>
+            <PropertyRef Name="XeID" />
+          </Key>
+          <Property Name="XeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenXe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MauXe" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LoaiXe" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BienSoXe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GiaThue" Type="Int32" />
+          <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_XE" FromRole="XE" ToRole="CT_DATXE" />
+          <NavigationProperty Name="DATXEs" Relationship="Self.FK_DATXE_Xe" FromRole="XE" ToRole="DATXE" />
+          <NavigationProperty Name="TAIXEs" Relationship="Self.FK_TAIXE_Xe" FromRole="XE" ToRole="TAIXE" />
+        </EntityType>
+        <Association Name="FK_CTBCDOANHSO_BCDOANHSO">
+          <End Role="BC_DOANHSO" Type="Self.BC_DOANHSO" Multiplicity="0..1" />
+          <End Role="CT_BCDOANHSO" Type="Self.CT_BCDOANHSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BC_DOANHSO">
+              <PropertyRef Name="BC_ID" />
+            </Principal>
+            <Dependent Role="CT_BCDOANHSO">
+              <PropertyRef Name="BC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTBCDOANHSO_TAIXE">
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
+          <End Role="CT_BCDOANHSO" Type="Self.CT_BCDOANHSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIXE">
+              <PropertyRef Name="TaiXeID" />
+            </Principal>
+            <Dependent Role="CT_BCDOANHSO">
+              <PropertyRef Name="TaiXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_DIADIEM">
+          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEM">
+              <PropertyRef Name="DDiemID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="DDiemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_PDVu">
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="DVuID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="DVuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_TAIXE">
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIXE">
+              <PropertyRef Name="TaiXeID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="TaiXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDATXE_XE">
+          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+          <End Role="CT_DATXE" Type="Self.CT_DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="XeID" />
+            </Principal>
+            <Dependent Role="CT_DATXE">
+              <PropertyRef Name="XeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DANHGIAPHANHOI_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="DANHGIA_PHANHOI" Type="Self.DANHGIA_PHANHOI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="DANHGIA_PHANHOI">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATXE_DIADIEM">
+          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="0..1" />
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEM">
+              <PropertyRef Name="DDiemID" />
+            </Principal>
+            <Dependent Role="DATXE">
+              <PropertyRef Name="DDiemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATXE_Xe">
+          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="XeID" />
+            </Principal>
+            <Dependent Role="DATXE">
+              <PropertyRef Name="XeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEUHUY_DATXE">
+          <End Role="DATXE" Type="Self.DATXE" Multiplicity="0..1" />
+          <End Role="PHIEU_HUYDATXE" Type="Self.PHIEU_HUYDATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATXE">
+              <PropertyRef Name="DatXeID" />
+            </Principal>
+            <Dependent Role="PHIEU_HUYDATXE">
+              <PropertyRef Name="DatXeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON_PDVu">
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="DVuID" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="DVuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEUHUY_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="PHIEU_HUYDATXE" Type="Self.PHIEU_HUYDATXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="PHIEU_HUYDATXE">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViVNS_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="VI_VNS" Type="Self.VI_VNS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="VI_VNS">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAIXE_KHUVUCLAMVIEC">
+          <End Role="KHUVUCLAMVIEC" Type="Self.KHUVUCLAMVIEC" Multiplicity="0..1" />
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHUVUCLAMVIEC">
+              <PropertyRef Name="KhuVucID" />
+            </Principal>
+            <Dependent Role="TAIXE">
+              <PropertyRef Name="KhuVucID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAIXE_LLVIEC">
+          <End Role="LICHLAMVIEC" Type="Self.LICHLAMVIEC" Multiplicity="0..1" />
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LICHLAMVIEC">
+              <PropertyRef Name="LLViecID" />
+            </Principal>
+            <Dependent Role="TAIXE">
+              <PropertyRef Name="LLViecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAIXE_Xe">
+          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+          <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="XeID" />
+            </Principal>
+            <Dependent Role="TAIXE">
+              <PropertyRef Name="XeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBCarBookingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BC_DOANHSO" EntityType="Self.BC_DOANHSO" />
+          <EntitySet Name="CT_BCDOANHSO" EntityType="Self.CT_BCDOANHSO" />
+          <EntitySet Name="CT_DATXE" EntityType="Self.CT_DATXE" />
+          <EntitySet Name="DANHGIA_PHANHOI" EntityType="Self.DANHGIA_PHANHOI" />
+          <EntitySet Name="DATXEs" EntityType="Self.DATXE" />
+          <EntitySet Name="DIADIEMs" EntityType="Self.DIADIEM" />
+          <EntitySet Name="DICHVUs" EntityType="Self.DICHVU" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="KHUVUCLAMVIECs" EntityType="Self.KHUVUCLAMVIEC" />
+          <EntitySet Name="LICHLAMVIECs" EntityType="Self.LICHLAMVIEC" />
+          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="PHIEU_HUYDATXE" EntityType="Self.PHIEU_HUYDATXE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TAIXEs" EntityType="Self.TAIXE" />
+          <EntitySet Name="VI_VNS" EntityType="Self.VI_VNS" />
+          <EntitySet Name="XEs" EntityType="Self.XE" />
+          <AssociationSet Name="FK_CTBCDOANHSO_BCDOANHSO" Association="Self.FK_CTBCDOANHSO_BCDOANHSO">
+            <End Role="BC_DOANHSO" EntitySet="BC_DOANHSO" />
+            <End Role="CT_BCDOANHSO" EntitySet="CT_BCDOANHSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTBCDOANHSO_TAIXE" Association="Self.FK_CTBCDOANHSO_TAIXE">
+            <End Role="TAIXE" EntitySet="TAIXEs" />
+            <End Role="CT_BCDOANHSO" EntitySet="CT_BCDOANHSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_DATXE" Association="Self.FK_CTDATXE_DATXE">
+            <End Role="DATXE" EntitySet="DATXEs" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_DIADIEM" Association="Self.FK_CTDATXE_DIADIEM">
+            <End Role="DIADIEM" EntitySet="DIADIEMs" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_KHACHHANG" Association="Self.FK_CTDATXE_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_PDVu" Association="Self.FK_CTDATXE_PDVu">
+            <End Role="DICHVU" EntitySet="DICHVUs" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_TAIXE" Association="Self.FK_CTDATXE_TAIXE">
+            <End Role="TAIXE" EntitySet="TAIXEs" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDATXE_XE" Association="Self.FK_CTDATXE_XE">
+            <End Role="XE" EntitySet="XEs" />
+            <End Role="CT_DATXE" EntitySet="CT_DATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DANHGIAPHANHOI_DATXE" Association="Self.FK_DANHGIAPHANHOI_DATXE">
+            <End Role="DATXE" EntitySet="DATXEs" />
+            <End Role="DANHGIA_PHANHOI" EntitySet="DANHGIA_PHANHOI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATXE_DIADIEM" Association="Self.FK_DATXE_DIADIEM">
+            <End Role="DIADIEM" EntitySet="DIADIEMs" />
+            <End Role="DATXE" EntitySet="DATXEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATXE_Xe" Association="Self.FK_DATXE_Xe">
+            <End Role="XE" EntitySet="XEs" />
+            <End Role="DATXE" EntitySet="DATXEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON_DATXE" Association="Self.FK_HOADON_DATXE">
+            <End Role="DATXE" EntitySet="DATXEs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEUHUY_DATXE" Association="Self.FK_PHIEUHUY_DATXE">
+            <End Role="DATXE" EntitySet="DATXEs" />
+            <End Role="PHIEU_HUYDATXE" EntitySet="PHIEU_HUYDATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON_PDVu" Association="Self.FK_HOADON_PDVu">
+            <End Role="DICHVU" EntitySet="DICHVUs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEUHUY_KHACHHANG" Association="Self.FK_PHIEUHUY_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="PHIEU_HUYDATXE" EntitySet="PHIEU_HUYDATXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViVNS_KHACHHANG" Association="Self.FK_ViVNS_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="VI_VNS" EntitySet="VI_VNS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAIXE_KHUVUCLAMVIEC" Association="Self.FK_TAIXE_KHUVUCLAMVIEC">
+            <End Role="KHUVUCLAMVIEC" EntitySet="KHUVUCLAMVIECs" />
+            <End Role="TAIXE" EntitySet="TAIXEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAIXE_LLVIEC" Association="Self.FK_TAIXE_LLVIEC">
+            <End Role="LICHLAMVIEC" EntitySet="LICHLAMVIECs" />
+            <End Role="TAIXE" EntitySet="TAIXEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAIXE_Xe" Association="Self.FK_TAIXE_Xe">
+            <End Role="XE" EntitySet="XEs" />
+            <End Role="TAIXE" EntitySet="TAIXEs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBCarBookingModelStoreContainer" CdmEntityContainer="DBCarBookingEntities">
+          <EntitySetMapping Name="BC_DOANHSO">
+            <EntityTypeMapping TypeName="DBCarBookingModel.BC_DOANHSO">
+              <MappingFragment StoreEntitySet="BC_DOANHSO">
+                <ScalarProperty Name="BC_ID" ColumnName="BC_ID" />
+                <ScalarProperty Name="TongDoanhSo" ColumnName="TongDoanhSo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_BCDOANHSO">
+            <EntityTypeMapping TypeName="DBCarBookingModel.CT_BCDOANHSO">
+              <MappingFragment StoreEntitySet="CT_BCDOANHSO">
+                <ScalarProperty Name="CTBC_ID" ColumnName="CTBC_ID" />
+                <ScalarProperty Name="BC_ID" ColumnName="BC_ID" />
+                <ScalarProperty Name="TaiXeID" ColumnName="TaiXeID" />
+                <ScalarProperty Name="TyLe" ColumnName="TyLe" />
+                <ScalarProperty Name="TongGiaTri" ColumnName="TongGiaTri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_DATXE">
+            <EntityTypeMapping TypeName="DBCarBookingModel.CT_DATXE">
+              <MappingFragment StoreEntitySet="CT_DATXE">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="CT_DatXeID" ColumnName="CT_DatXeID" />
+                <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+                <ScalarProperty Name="XeID" ColumnName="XeID" />
+                <ScalarProperty Name="TaiXeID" ColumnName="TaiXeID" />
+                <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />
+                <ScalarProperty Name="KhID" ColumnName="KhID" />
+                <ScalarProperty Name="DVuID" ColumnName="DVuID" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANHGIA_PHANHOI">
+            <EntityTypeMapping TypeName="DBCarBookingModel.DANHGIA_PHANHOI">
+              <MappingFragment StoreEntitySet="DANHGIA_PHANHOI">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+                <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+                <ScalarProperty Name="PhanHoi" ColumnName="PhanHoi" />
+                <ScalarProperty Name="NgayDanhGia" ColumnName="NgayDanhGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATXEs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.DATXE">
+              <MappingFragment StoreEntitySet="DATXE">
+                <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+                <ScalarProperty Name="XeID" ColumnName="XeID" />
+                <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIADIEMs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.DIADIEM">
+              <MappingFragment StoreEntitySet="DIADIEM">
+                <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />
+                <ScalarProperty Name="DiemXuatPhat" ColumnName="DiemXuatPhat" />
+                <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DICHVUs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.DICHVU">
+              <MappingFragment StoreEntitySet="DICHVU">
+                <ScalarProperty Name="DVuID" ColumnName="DVuID" />
+                <ScalarProperty Name="TenDV" ColumnName="TenDV" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="LoaiDichVu" ColumnName="LoaiDichVu" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
+                <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+                <ScalarProperty Name="DVuID" ColumnName="DVuID" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+                <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="KhID" ColumnName="KhID" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHUVUCLAMVIECs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.KHUVUCLAMVIEC">
+              <MappingFragment StoreEntitySet="KHUVUCLAMVIEC">
+                <ScalarProperty Name="KhuVucID" ColumnName="KhuVucID" />
+                <ScalarProperty Name="TenKhuVuc" ColumnName="TenKhuVuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LICHLAMVIECs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.LICHLAMVIEC">
+              <MappingFragment StoreEntitySet="LICHLAMVIEC">
+                <ScalarProperty Name="LLViecID" ColumnName="LLViecID" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="ThoiGianBD" ColumnName="ThoiGianBD" />
+                <ScalarProperty Name="ThoiGianKT" ColumnName="ThoiGianKT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="NhanVienID" ColumnName="NhanVienID" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHIEU_HUYDATXE">
+            <EntityTypeMapping TypeName="DBCarBookingModel.PHIEU_HUYDATXE">
+              <MappingFragment StoreEntitySet="PHIEU_HUYDATXE">
+                <ScalarProperty Name="PhieuID" ColumnName="PhieuID" />
+                <ScalarProperty Name="KhID" ColumnName="KhID" />
+                <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
+                <ScalarProperty Name="ThoiGianHuy" ColumnName="ThoiGianHuy" />
+                <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBCarBookingModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAIXEs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.TAIXE">
+              <MappingFragment StoreEntitySet="TAIXE">
+                <ScalarProperty Name="TaiXeID" ColumnName="TaiXeID" />
+                <ScalarProperty Name="KhuVucID" ColumnName="KhuVucID" />
+                <ScalarProperty Name="LLViecID" ColumnName="LLViecID" />
+                <ScalarProperty Name="XeID" ColumnName="XeID" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SoCuocXe" ColumnName="SoCuocXe" />
+                <ScalarProperty Name="Luong" ColumnName="Luong" />
+                <ScalarProperty Name="TinhTrangHopDong" ColumnName="TinhTrangHopDong" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VI_VNS">
+            <EntityTypeMapping TypeName="DBCarBookingModel.VI_VNS">
+              <MappingFragment StoreEntitySet="VI_VNS">
+                <ScalarProperty Name="ViID" ColumnName="ViID" />
+                <ScalarProperty Name="KhID" ColumnName="KhID" />
+                <ScalarProperty Name="SoDu" ColumnName="SoDu" />
+                <ScalarProperty Name="ThoiGianTao" ColumnName="ThoiGianTao" />
+                <ScalarProperty Name="ThoiGianGiaoDich" ColumnName="ThoiGianGiaoDich" />
+                <ScalarProperty Name="SoTienGiaoDich" ColumnName="SoTienGiaoDich" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XEs">
+            <EntityTypeMapping TypeName="DBCarBookingModel.XE">
+              <MappingFragment StoreEntitySet="XE">
+                <ScalarProperty Name="XeID" ColumnName="XeID" />
+                <ScalarProperty Name="TenXe" ColumnName="TenXe" />
+                <ScalarProperty Name="MauXe" ColumnName="MauXe" />
+                <ScalarProperty Name="LoaiXe" ColumnName="LoaiXe" />
+                <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+                <ScalarProperty Name="GiaThue" ColumnName="GiaThue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
