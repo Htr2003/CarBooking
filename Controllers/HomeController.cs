@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Linq;
 using System.Data;
 using System;
+using System.Collections.Generic;
 
 namespace CarBooking.Controllers
 {
@@ -157,48 +158,60 @@ namespace CarBooking.Controllers
                 if (string.IsNullOrEmpty(xe.LoaiXe))
                     ModelState.AddModelError(string.Empty, "kh dc de trong loai xe");
             }
+
             if (ModelState.IsValid)
             {
                 database.DIADIEMs.Add(Ddiem);
+                database.SaveChanges();
 
                 int diadiemId = Ddiem.DDiemID;
 
-                var datXe = new DATXE
+                var xeMapping = new Dictionary<string, int>
                 {
-                    XeID = xe.XeID,
-                    DDiemID = diadiemId,
-                    ThoiGian = dx.ThoiGian 
+                    { "xe 4 chỗ", 1 }, 
+                    { "xe 7 chỗ", 2 }, 
+                    { "xe du lịch", 3 } 
                 };
 
-                database.DATXEs.Add(datXe);
+                if (xeMapping.TryGetValue(xe.LoaiXe, out int xeId))
+                {
+                    var datXe = new DATXE
+                    {
+                        XeID = xeId,
+                        DDiemID = diadiemId,
+                        ThoiGian = dx.ThoiGian
+                    };
 
-                Session["DiemXuatPhat"] = Ddiem.DiemXuatPhat;
-                Session["DiemDen"] = Ddiem.DiemDen;
-                Session["ThoiGian"] = dx.ThoiGian;
-                Session["DiemXuatPhat"] = xe.LoaiXe;
-                Session["DatXe"] = datXe;
 
+                    database.DATXEs.Add(datXe);
+                    database.SaveChanges();
 
-                database.SaveChanges();
+                    Session["DiemXuatPhat"] = Ddiem.DiemXuatPhat;
+                    Session["DiemDen"] = Ddiem.DiemDen;
+                    Session["ThoiGian"] = dx.ThoiGian;
+                    Session["loaiXe"] = xe.LoaiXe;
+                    Session["DatXe"] = datXe;
 
-                return RedirectToAction("BookingInfo");
+                    return RedirectToAction("BookingInfo");
+                }
+
+                else
+                {
+                    return View("Error", "khong ton tai loai xe nay trong database.");
+                }
+
+                
             }
-
-            else
-            {
-                ViewBag.thongbao = "moi nhap lai form dat xe";
-            }
-
-            return View();
+            else { return ViewBag.thongbao = "moi nhap lai form"; }
+           
         }
-
         [HttpGet]
         public ActionResult BookingInfo() { return View(); }
 
         [HttpPost]
-        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx, int id)
+        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx, DIADIEM ddiem, XE xe, int id)
         {
-            var datXe = database.DATXEs.Include("DIADIEM").FirstOrDefault(d => d.DatXeID == id);
+            var datXe = database.DATXEs.FirstOrDefault(x => x.DatXeID == dx.DatXeID);
 
             if (datXe != null)
             {
