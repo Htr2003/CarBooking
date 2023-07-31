@@ -10,7 +10,6 @@
 namespace CarBooking.Models
 {
     using System;
-    using System.Collections.Generic;
     
     public partial class CT_BCDOANHSO
     {

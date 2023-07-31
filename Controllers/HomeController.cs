@@ -216,8 +216,10 @@ namespace CarBooking.Controllers
                 if (string.IsNullOrEmpty(kh.Email))
                     ModelState.AddModelError(string.Empty, "email khong duoc de trong");
 
+                if (Session["Name"] != null)
+                {
 
-
+                }
             }
             return View();
         }
