@@ -149,10 +149,7 @@ namespace CarBooking.Controllers
 
                 if (string.IsNullOrEmpty(Ddiem.DiemDen))
                     ModelState.AddModelError(string.Empty, " khong duoc de trong diem den");
-            }
-
-            if (ModelState.IsValid)
-            {
+            
                 database.DIADIEMs.Add(Ddiem);
                 database.SaveChanges();
 
@@ -208,8 +205,20 @@ namespace CarBooking.Controllers
         }
 
         [HttpPost]
-        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx)
-        { 
+        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx, CT_DATXE cd, HOADON hd)
+        {
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(kh.HoTen))
+                    ModelState.AddModelError(string.Empty, "ten khong duoc de trong");
+                if (string.IsNullOrEmpty(kh.Sdt))
+                    ModelState.AddModelError(string.Empty, "sdt khong duoc de trong");
+                if (string.IsNullOrEmpty(kh.Email))
+                    ModelState.AddModelError(string.Empty, "email khong duoc de trong");
+
+
+
+            }
             return View();
         }
     }
