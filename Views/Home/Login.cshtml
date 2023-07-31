@@ -1,15 +1,15 @@
 ﻿@model CarBooking.Models.KHACHHANG
 
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "dangnhap";
+    //Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    <link href="/Content/bootstrap.css" rel="stylesheet">
 }
 
 <head>
     <style>
         #titleLogin {
             padding-left: 35%;
-            padding-top: 30px;
         }
 
         #inputLogin {
@@ -19,6 +19,7 @@
         }
     </style>
 </head>
+
 <div style="margin: 10px auto; width: 70%;">
     <h2 style="text-align: center; padding-top: 30px">Đăng nhập</h2>
     <h4 style="color:red; text-align:center">@ViewBag.ThongBao</h4>
@@ -38,12 +39,9 @@
         <div style="text-align:center" class="mb-3">
             Bạn chưa có tài khoản sao ?
             <span>@Html.ActionLink("Đăng kí", "Register", "Home")</span>
-
         </div>
 
-        <input style=" margin-left:45%;" type="submit" name="login" value="Đăng nhập" class="btn btn-primary " />
+        <input style=" margin-left:45%; border-radius:20px;" type="submit" name="login" value="Đăng nhập" class="btn btn-primary " />
 
     }
-
 </div>
-
