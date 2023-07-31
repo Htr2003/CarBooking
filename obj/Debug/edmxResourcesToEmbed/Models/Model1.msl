@@ -23,7 +23,6 @@
     <EntitySetMapping Name="CT_DATXE">
       <EntityTypeMapping TypeName="DBCarBookingModel.CT_DATXE">
         <MappingFragment StoreEntitySet="CT_DATXE">
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="CT_DatXeID" ColumnName="CT_DatXeID" />
           <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
           <ScalarProperty Name="XeID" ColumnName="XeID" />
@@ -32,6 +31,7 @@
           <ScalarProperty Name="KhID" ColumnName="KhID" />
           <ScalarProperty Name="DVuID" ColumnName="DVuID" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

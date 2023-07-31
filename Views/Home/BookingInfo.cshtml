@@ -53,34 +53,31 @@
     </div>
 
 
-    <div class="form-container">
-        @using (Html.BeginForm("ProcessConfirmation", "Home", FormMethod.Post))
+    <div class="formInfo-container">
+        @using (Html.BeginForm("BookingInfo", "Home", FormMethod.Post))
         {
             @Html.HiddenFor(m => m.DatXeID)
             <h2>Booking Details</h2>
             <div class="form-group">
                 <label for="from">Điểm đi:</label>
-                <input type="text" id="from" name="DiemXuatPhat" value="@Model.DIADIEM.DiemXuatPhat" readonly>
+                <input value="@Html.DisplayFor(model => model.DIADIEM.DiemXuatPhat)" readonly>
             </div>
 
             <div class="form-group">
                 <label for="to">Điểm đến:</label>
-                <input type="text" id="to" name="DiemDen" value="@Model.DIADIEM.DiemDen" readonly>
+                <input value="@Html.DisplayFor(model => model.DIADIEM.DiemDen)" readonly>
             </div>
 
             <div class="form-group">
                 <label for="datetime">Thời gian:</label>
-                <input type="datetime-local" id="datetime" name="ThoiGian" value="@Model.ThoiGian" readonly>
+                <input  value="@Html.DisplayFor(model => model.ThoiGian)" readonly>
             </div>
 
             <div class="form-group">
                 <label for="carType">Loại xe:</label>
-                <input type="text" id="carType" name="LoaiXe" value="@Model.XE.LoaiXe" readonly>
+                <input value="@Html.DisplayFor(model => model.XE.LoaiXe)" readonly>
             </div>
-
-            <input>
         }
-
     </div>
 </div>
 

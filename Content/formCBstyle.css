@@ -1,57 +1,60 @@
 ﻿body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 0;
 }
 
-h1 {
-    text-align: center;
+.container {
+    place-items: center;
+    display: flex;
+    flex-direction: row;
 }
 
-form {
-    max-width: 300px;
-    margin: 0 auto;
-    background-color: #f2f2f2;
-    padding: 16px;
-    border-radius: 21px;
+.slogan-container {
+    font-size: 36px;
+    flex: 1;
+    padding: 20px;
 }
+
+.form-container {
+    flex: 1;
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin: 25px;
+    margin-right: 0px;
+    margin-left: 0px;
+    border-radius:21px;
+}
+
+    .form-container h1 {
+        text-align: center;
+    }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 15px;
 }
 
 label {
-    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
 }
 
 input[type="text"],
+input[type="datetime-local"],
 select {
+    width: 100%;
     padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
     border: 1px solid #ccc;
-}
-
-input[type="datetime-local"] {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    border-radius: 15px;
 }
 
 input[type="submit"] {
     background-color: darkcyan;
     color: white;
-    padding: 10px 20px;
-    margin-left: 110px;
-    font-size: 16px;
+    padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 21px;
     cursor: pointer;
+    margin-left:280px;
 }
-
     input[type="submit"]:hover {
-        background-color: darkcyan;
+        background-color: darkblue;
     }

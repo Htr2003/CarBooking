@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBCarBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBCarBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BC_DOANHSO">
           <Key>
             <PropertyRef Name="BC_ID" />
@@ -510,7 +510,8 @@
             <End Role="VI_VNS" EntitySet="VI_VNS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBCarBookingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -546,13 +547,13 @@
           <Property Name="KhID" Type="Int32" />
           <Property Name="DVuID" Type="Int32" />
           <Property Name="TongTien" Type="Int32" />
+          <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DATXE" Relationship="Self.FK_CTDATXE_DATXE" FromRole="CT_DATXE" ToRole="DATXE" />
           <NavigationProperty Name="DIADIEM" Relationship="Self.FK_CTDATXE_DIADIEM" FromRole="CT_DATXE" ToRole="DIADIEM" />
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_CTDATXE_KHACHHANG" FromRole="CT_DATXE" ToRole="KHACHHANG" />
           <NavigationProperty Name="DICHVU" Relationship="Self.FK_CTDATXE_PDVu" FromRole="CT_DATXE" ToRole="DICHVU" />
           <NavigationProperty Name="TAIXE" Relationship="Self.FK_CTDATXE_TAIXE" FromRole="CT_DATXE" ToRole="TAIXE" />
           <NavigationProperty Name="XE" Relationship="Self.FK_CTDATXE_XE" FromRole="CT_DATXE" ToRole="XE" />
-          <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DANHGIA_PHANHOI">
           <Key>
@@ -1085,7 +1086,6 @@
           <EntitySetMapping Name="CT_DATXE">
             <EntityTypeMapping TypeName="DBCarBookingModel.CT_DATXE">
               <MappingFragment StoreEntitySet="CT_DATXE">
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="CT_DatXeID" ColumnName="CT_DatXeID" />
                 <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
                 <ScalarProperty Name="XeID" ColumnName="XeID" />
@@ -1094,6 +1094,7 @@
                 <ScalarProperty Name="KhID" ColumnName="KhID" />
                 <ScalarProperty Name="DVuID" ColumnName="DVuID" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -32,13 +32,13 @@
     <Property Name="KhID" Type="Int32" />
     <Property Name="DVuID" Type="Int32" />
     <Property Name="TongTien" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DATXE" Relationship="Self.FK_CTDATXE_DATXE" FromRole="CT_DATXE" ToRole="DATXE" />
     <NavigationProperty Name="DIADIEM" Relationship="Self.FK_CTDATXE_DIADIEM" FromRole="CT_DATXE" ToRole="DIADIEM" />
     <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_CTDATXE_KHACHHANG" FromRole="CT_DATXE" ToRole="KHACHHANG" />
     <NavigationProperty Name="DICHVU" Relationship="Self.FK_CTDATXE_PDVu" FromRole="CT_DATXE" ToRole="DICHVU" />
     <NavigationProperty Name="TAIXE" Relationship="Self.FK_CTDATXE_TAIXE" FromRole="CT_DATXE" ToRole="TAIXE" />
     <NavigationProperty Name="XE" Relationship="Self.FK_CTDATXE_XE" FromRole="CT_DATXE" ToRole="XE" />
-    <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DANHGIA_PHANHOI">
     <Key>

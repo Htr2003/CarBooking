@@ -13,12 +13,6 @@ header {
     padding: 10px;
 }
 
-.logo img {
-    width: 300px;
-    height: 300px;
-    margin-right: 600px;
-}
-
 .hotline {
     display:flex;
     margin-right: 60px;
@@ -46,3 +40,9 @@ nav ul {
             nav ul li a:hover {
                 color: #007bff;
             }
+.footer {
+    clear: both;
+    display: flex;
+    flex-direction: row;
+    background-color:darkcyan;
+}

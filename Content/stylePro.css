@@ -1,9 +1,35 @@
-﻿.form-group {
-    margin-bottom: 15px;
+﻿.parent-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-inline: 100px;
+    margin-top: 70px;
+}
+
+.form-container {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: mintcream;
+    border-radius: 21px;
+}
+
+.formInfo-container {
+    flex: 1;
+    padding: 20px;
+    margin-left: 40px;
+    margin-bottom: 300px;
+    border: 1px solid #ccc;
+    border-radius: 21px;
+    background-color: mintcream;
+}
+
+/* Additional styles for form elements (optional) */
+.form-group {
+    margin-bottom: 10px;
 }
 
 label {
-    display: block;
     font-weight: bold;
 }
 
@@ -17,60 +43,6 @@ textarea {
     border-radius: 4px;
 }
 
-input[type="radio"],
-input[type="submit"] {
+input[type="radio"] {
     margin-right: 5px;
-}
-
-textarea {
-    resize: vertical;
-}
-
-input[type="submit"] {
-    border: none;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-
-/* Additional styles specific to the ConfirmationForm */
-#confirmation-form {
-    margin-top: 20px;
-}
-
-    #confirmation-form h2 {
-        margin-bottom: 10px;
-    }
-
-    #confirmation-form .form-group {
-        display: flex;
-        align-items: center;
-    }
-
-    #confirmation-form label {
-        flex: 1;
-    }
-
-    #confirmation-form input[type="text"],
-    #confirmation-form input[type="datetime-local"] {
-        flex: 2;
-    }
-.form-container {
-    display: inline-block;
-    vertical-align: top;
-    width: 45%; /* Adjust the width as needed */
-    margin-right: 5%; /* Add some spacing between the forms */
-}
-
-/* Clearfix for the parent container to prevent overlapping of elements */
-.parent-container::after {
-    content: "";
-    display: table;
-    clear: both;
 }

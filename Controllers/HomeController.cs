@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
 namespace CarBooking.Controllers
 {
@@ -57,7 +58,7 @@ namespace CarBooking.Controllers
                 {
                     ModelState.AddModelError(string.Empty, "Ten dang nhap da duoc dung, vui long chon ten khac!");
                 }
-               
+
             }
 
             return View();
@@ -102,7 +103,7 @@ namespace CarBooking.Controllers
                     Session["MatKhau"] = check.MatKhau;
                     Session["TaiKhoan"] = check;
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("FormCarBooking", "Home");
                 }
                 else
                 {
@@ -128,20 +129,14 @@ namespace CarBooking.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("Login");
             }
-        }
-
-
-        public ActionResult Index()
-        {
-            return View();
         }
 
         [HttpGet]
         public ActionResult FormCarBooking()
         {
-            return View();  
+            return View();
         }
 
         [HttpPost]
@@ -154,9 +149,6 @@ namespace CarBooking.Controllers
 
                 if (string.IsNullOrEmpty(Ddiem.DiemDen))
                     ModelState.AddModelError(string.Empty, " khong duoc de trong diem den");
-
-                if (string.IsNullOrEmpty(xe.LoaiXe))
-                    ModelState.AddModelError(string.Empty, "kh dc de trong loai xe");
             }
 
             if (ModelState.IsValid)
@@ -168,29 +160,25 @@ namespace CarBooking.Controllers
 
                 var xeMapping = new Dictionary<string, int>
                 {
-                    { "xe 4 chỗ", 1 }, 
-                    { "xe 7 chỗ", 2 }, 
-                    { "xe du lịch", 3 } 
+                    { "xe 4 chỗ", 1 },
+                    { "xe 7 chỗ", 2 },
+                    { "xe du lịch", 3 }
                 };
 
                 if (xeMapping.TryGetValue(xe.LoaiXe, out int xeId))
                 {
                     var datXe = new DATXE
                     {
+                        DatXeID = dx.DatXeID,
                         XeID = xeId,
                         DDiemID = diadiemId,
                         ThoiGian = dx.ThoiGian
                     };
 
-
                     database.DATXEs.Add(datXe);
                     database.SaveChanges();
 
-                    Session["DiemXuatPhat"] = Ddiem.DiemXuatPhat;
-                    Session["DiemDen"] = Ddiem.DiemDen;
-                    Session["ThoiGian"] = dx.ThoiGian;
-                    Session["loaiXe"] = xe.LoaiXe;
-                    Session["DatXe"] = datXe;
+                    Session["DatXe"] = datXe.DatXeID;
 
                     return RedirectToAction("BookingInfo");
                 }
@@ -200,26 +188,29 @@ namespace CarBooking.Controllers
                     return View("Error", "khong ton tai loai xe nay trong database.");
                 }
 
-                
+
             }
             else { return ViewBag.thongbao = "moi nhap lai form"; }
-           
+
         }
         [HttpGet]
-        public ActionResult BookingInfo() { return View(); }
-
-        [HttpPost]
-        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx, DIADIEM ddiem, XE xe, int id)
+        public ActionResult BookingInfo()
         {
-            var datXe = database.DATXEs.FirstOrDefault(x => x.DatXeID == dx.DatXeID);
-
-            if (datXe != null)
+            if (Session["DatXe"] == null)
             {
-                return View(datXe);
+                return RedirectToAction("FormCarBooking");
             }
 
-            return View("Index");
+            var datXeId = (int)Session["DatXe"];
+            var d = database.DATXEs.Find(datXeId);
+
+            return View(d);
         }
-       
+
+        [HttpPost]
+        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx)
+        { 
+            return View();
+        }
     }
 }
