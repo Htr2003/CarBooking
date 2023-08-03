@@ -69,6 +69,7 @@ namespace CarBooking.Controllers
                 ride.TrangThai = "Đã nhận";
                 ride.TaiXeID = driver.TaiXeID;
 
+                Session["NgayNhanCuoc_" + rideId] = DateTime.Now;
                 Session["CurrentRideId"] = rideId;
                 database.SaveChanges();
             }
@@ -89,6 +90,22 @@ namespace CarBooking.Controllers
             }
 
             return RedirectToAction("DanhSachCuocXe");
+        }
+
+        public ActionResult LichSuCuocXe()
+        {
+            var lichSuCuocXe = database.CT_DATXE
+                .Where(x => x.TrangThai == "Hoàn tất").ToList()
+                .Select(x => new LichSuCuocXeViewModel
+                {
+                    DatXeID = (int)x.DatXeID,
+                    TenKhachHang = x.KHACHHANG.HoTen,
+                    Sdt = x.KHACHHANG.Sdt,
+                    NgayNhanCuoc = Session["NgayNhanCuoc_" + x.CT_DatXeID] as DateTime? ?? DateTime.MinValue 
+                })
+                .ToList();
+
+            return View(lichSuCuocXe);
         }
     }
 }

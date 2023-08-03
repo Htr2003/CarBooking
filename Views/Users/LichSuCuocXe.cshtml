@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CarBooking.Models.LichSuCuocXeViewModel>
+
+@{
+    ViewBag.Title = "LichSuCuocXe";
+    Layout = "~/Views/Shared/_TaiXeLayout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <h2 class="text-center mt-4 mb-4">Lịch Sử Cuốc Xe</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã đặt xe</th>
+                <th>Tên khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Ngày nhận cuốc</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.DatXeID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TenKhachHang)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Sdt)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NgayNhanCuoc)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
