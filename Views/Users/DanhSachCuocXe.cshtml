@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CarBooking.Models.CT_DATXE>
+
+@{
+    ViewBag.Title = "DanhSachCuocXe";
+    Layout = "~/Views/Shared/_TaiXeLayout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <h2 class="text-center mt-5 mb-5">Danh Sách Cuốc Xe</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Tên khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Điểm xuất phát</th>
+                <th>Điểm đến</th>
+                <th>Thời gian</th>
+                <th>Loại xe</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => item.KHACHHANG.HoTen)</td>
+                    <td>@Html.DisplayFor(model => item.KHACHHANG.Sdt)</td>
+                    <td>@Html.DisplayFor(model => item.DIADIEM.DiemXuatPhat)</td>
+                    <td>@Html.DisplayFor(model => item.DIADIEM.DiemDen)</td>
+                    <td>@Html.DisplayFor(model => item.DATXE.ThoiGian)</td>
+                    <td>@Html.DisplayFor(model => item.XE.LoaiXe)</td>
+                    <td>@Html.DisplayFor(model => item.TrangThai)</td>
+                    <td>
+                        @if (item.TrangThai == "Đang chờ")
+                        {
+                            <form method="post" action="@Url.Action("TiepNhanCuocXe", "Users")">
+                                @Html.Hidden("rideId", item.CT_DatXeID)
+                                <button type="submit" class="btn btn-primary">Tiếp nhận</button>
+                            </form>
+                        }
+                        else if (item.TrangThai == "Đã nhận")
+                        {
+                            <form method="post" action="@Url.Action("HoanTatCuocXe", "Users")">
+                                @Html.Hidden("rideId", item.CT_DatXeID)
+                                <button type="submit" class="btn btn-success">Hoàn tất</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="badge badge-success">@item.TrangThai</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

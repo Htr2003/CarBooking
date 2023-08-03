@@ -30,6 +30,7 @@
     <Property Name="DVuID" Type="int" />
     <Property Name="TongTien" Type="int" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="DANHGIA_PHANHOI">
     <Key>

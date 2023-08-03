@@ -23,6 +23,7 @@ namespace CarBooking.Models
         public Nullable<int> DVuID { get; set; }
         public Nullable<int> TongTien { get; set; }
         public string GhiChu { get; set; }
+        public string TrangThai { get; set; }
     
         public virtual DATXE DATXE { get; set; }
         public virtual DIADIEM DIADIEM { get; set; }

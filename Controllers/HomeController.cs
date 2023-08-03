@@ -78,14 +78,15 @@ namespace CarBooking.Controllers
                 if (string.IsNullOrEmpty(acc.TenDangNhap))
                     ModelState.AddModelError(string.Empty, "Ten dang nhap kh dc de trong");
                 if (string.IsNullOrEmpty(acc.MatKhau))
-                    ModelState.AddModelError(string.Empty, "mat khau kh dc de trong ");
+                    ModelState.AddModelError(string.Empty, "Mat khau kh dc de trong ");
 
                 var checkTaiXe = database.TAIXEs.FirstOrDefault(t => t.TenDangNhap == acc.TenDangNhap && t.MatKhau == acc.MatKhau);
                 if (checkTaiXe != null)
                 {
                     Session["taixeID"] = checkTaiXe.TaiXeID;
+                    Session["TaiXe"] = checkTaiXe.HoTen;
                     Session["TaiXeAccount"] = checkTaiXe.TenDangNhap;
-                    return RedirectToAction("TaiXe", "Uses");
+                    return RedirectToAction("TaiXe", "Users");
                 }
 
                 var checkNV = database.NHANVIENs.FirstOrDefault(n => n.TenDangNhap == acc.TenDangNhap && n.MatKhau == acc.MatKhau);
@@ -249,13 +250,21 @@ namespace CarBooking.Controllers
                     cd.DatXeID = d.DatXeID;
                     cd.XeID = x.XeID;
                     cd.DDiemID = dd.DDiemID;
+                    cd.TrangThai = "Đang chờ".ToString();
                 }
 
                 database.CT_DATXE.Add(cd);
                 database.SaveChanges();
 
-                ViewBag.SuccessMessage = "Đặt xe thành công!";
+                Session["ctdatxe"] = cd.CT_DatXeID;
+
+                return View("Notify");
             }
+            return View();
+        }
+
+        public ActionResult Notify()
+        {
             return View();
         }
     }

@@ -35,6 +35,7 @@
           <Property Name="DVuID" Type="int" />
           <Property Name="TongTien" Type="int" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="DANHGIA_PHANHOI">
           <Key>
@@ -570,6 +571,7 @@
           <NavigationProperty Name="DICHVU" Relationship="Self.FK_CTDATXE_PDVu" FromRole="CT_DATXE" ToRole="DICHVU" />
           <NavigationProperty Name="TAIXE" Relationship="Self.FK_CTDATXE_TAIXE" FromRole="CT_DATXE" ToRole="TAIXE" />
           <NavigationProperty Name="XE" Relationship="Self.FK_CTDATXE_XE" FromRole="CT_DATXE" ToRole="XE" />
+          <Property Name="TrangThai" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DANHGIA_PHANHOI">
           <Key>
@@ -629,10 +631,10 @@
           <Property Name="TongTien" Type="Int32" />
           <Property Name="NgayXuat" Type="DateTime" Precision="0" />
           <Property Name="PhuongThucThanhToan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KhID" Type="Int32" />
           <NavigationProperty Name="DATXE" Relationship="Self.FK_HOADON_DATXE" FromRole="HOADON" ToRole="DATXE" />
           <NavigationProperty Name="DICHVU" Relationship="Self.FK_HOADON_PDVu" FromRole="HOADON" ToRole="DICHVU" />
-          <Property Name="KhID" Type="Int32" />
-          <NavigationProperty Name="KHACHHANG" Relationship="DBCarBookingModel.fk_HoaDon_KhachHang" FromRole="HOADON" ToRole="KHACHHANG" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.fk_HoaDon_KhachHang" FromRole="HOADON" ToRole="KHACHHANG" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -647,9 +649,9 @@
           <Property Name="TenDangNhap" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MatKhau" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_KHACHHANG" FromRole="KHACHHANG" ToRole="CT_DATXE" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.fk_HoaDon_KhachHang" FromRole="KHACHHANG" ToRole="HOADON" />
           <NavigationProperty Name="PHIEU_HUYDATXE" Relationship="Self.FK_PHIEUHUY_KHACHHANG" FromRole="KHACHHANG" ToRole="PHIEU_HUYDATXE" />
           <NavigationProperty Name="VI_VNS" Relationship="Self.FK_ViVNS_KHACHHANG" FromRole="KHACHHANG" ToRole="VI_VNS" />
-          <NavigationProperty Name="HOADONs" Relationship="DBCarBookingModel.fk_HoaDon_KhachHang" FromRole="KHACHHANG" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="KHUVUCLAMVIEC">
           <Key>
@@ -922,6 +924,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_HoaDon_KhachHang">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PHIEUHUY_KHACHHANG">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
           <End Role="PHIEU_HUYDATXE" Type="Self.PHIEU_HUYDATXE" Multiplicity="*" />
@@ -1056,6 +1070,10 @@
             <End Role="DICHVU" EntitySet="DICHVUs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
+          <AssociationSet Name="fk_HoaDon_KhachHang" Association="Self.fk_HoaDon_KhachHang">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
           <AssociationSet Name="FK_PHIEUHUY_KHACHHANG" Association="Self.FK_PHIEUHUY_KHACHHANG">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="PHIEU_HUYDATXE" EntitySet="PHIEU_HUYDATXE" />
@@ -1076,23 +1094,7 @@
             <End Role="XE" EntitySet="XEs" />
             <End Role="TAIXE" EntitySet="TAIXEs" />
           </AssociationSet>
-          <AssociationSet Name="fk_HoaDon_KhachHang" Association="DBCarBookingModel.fk_HoaDon_KhachHang">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="HOADON" EntitySet="HOADONs" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="fk_HoaDon_KhachHang">
-          <End Type="DBCarBookingModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
-          <End Type="DBCarBookingModel.HOADON" Role="HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="KhID" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="KhID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1121,6 +1123,7 @@
           <EntitySetMapping Name="CT_DATXE">
             <EntityTypeMapping TypeName="DBCarBookingModel.CT_DATXE">
               <MappingFragment StoreEntitySet="CT_DATXE">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="CT_DatXeID" ColumnName="CT_DatXeID" />
                 <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
                 <ScalarProperty Name="XeID" ColumnName="XeID" />
@@ -1177,13 +1180,13 @@
           <EntitySetMapping Name="HOADONs">
             <EntityTypeMapping TypeName="DBCarBookingModel.HOADON">
               <MappingFragment StoreEntitySet="HOADON">
-                <ScalarProperty Name="KhID" ColumnName="KhID" />
                 <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
                 <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
                 <ScalarProperty Name="DVuID" ColumnName="DVuID" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
                 <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
                 <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
+                <ScalarProperty Name="KhID" ColumnName="KhID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
