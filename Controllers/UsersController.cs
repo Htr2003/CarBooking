@@ -20,9 +20,9 @@ namespace CarBooking.Controllers
             var VaiTro = Session["VaiTro"]?.ToString();
 
             if (VaiTro == "KeToan")
-                return RedirectToAction("Index", "KeToan");
+                return RedirectToAction("KeToan", "Users");
             else if (VaiTro == "DieuPhoi")
-                return RedirectToAction("Index", "NVDieuPhoi");
+                return RedirectToAction("NVDieuPhoi", "Users");
 
             else
             {
@@ -37,6 +37,11 @@ namespace CarBooking.Controllers
         }
 
         public ActionResult NVDieuPhoi()
+        {
+            return View();
+        }
+
+        public ActionResult TaiXe()
         {
             return View();
         }

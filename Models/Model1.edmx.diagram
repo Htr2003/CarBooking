@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5d90336e41764dcf9a313599b24b7675" Name="Diagram1">
+      <Diagram DiagramId="5d90336e41764dcf9a313599b24b7675" Name="Diagram1" ZoomLevel="75">
         <EntityTypeShape EntityType="DBCarBookingModel.BC_DOANHSO" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBCarBookingModel.CT_BCDOANHSO" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBCarBookingModel.CT_DATXE" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
@@ -41,6 +41,7 @@
         <AssociationConnector Association="DBCarBookingModel.FK_TAIXE_KHUVUCLAMVIEC" ManuallyRouted="false" />
         <AssociationConnector Association="DBCarBookingModel.FK_TAIXE_LLVIEC" ManuallyRouted="false" />
         <AssociationConnector Association="DBCarBookingModel.FK_TAIXE_Xe" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCarBookingModel.fk_HoaDon_KhachHang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

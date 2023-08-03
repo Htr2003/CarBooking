@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBCarBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBCarBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BC_DOANHSO">
           <Key>
             <PropertyRef Name="BC_ID" />
@@ -83,6 +83,7 @@
           <Property Name="TongTien" Type="int" />
           <Property Name="NgayXuat" Type="date" />
           <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="100" />
+          <Property Name="KhID" Type="int" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -331,6 +332,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_HoaDon_KhachHang">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HOADON_PDVu">
           <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
@@ -481,6 +494,10 @@
             <End Role="DATXE" EntitySet="DATXE" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
+          <AssociationSet Name="fk_HoaDon_KhachHang" Association="Self.fk_HoaDon_KhachHang">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
           <AssociationSet Name="FK_HOADON_PDVu" Association="Self.FK_HOADON_PDVu">
             <End Role="DICHVU" EntitySet="DICHVU" />
             <End Role="HOADON" EntitySet="HOADON" />
@@ -510,8 +527,7 @@
             <End Role="VI_VNS" EntitySet="VI_VNS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBCarBookingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -615,6 +631,8 @@
           <Property Name="PhuongThucThanhToan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DATXE" Relationship="Self.FK_HOADON_DATXE" FromRole="HOADON" ToRole="DATXE" />
           <NavigationProperty Name="DICHVU" Relationship="Self.FK_HOADON_PDVu" FromRole="HOADON" ToRole="DICHVU" />
+          <Property Name="KhID" Type="Int32" />
+          <NavigationProperty Name="KHACHHANG" Relationship="DBCarBookingModel.fk_HoaDon_KhachHang" FromRole="HOADON" ToRole="KHACHHANG" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -631,6 +649,7 @@
           <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_KHACHHANG" FromRole="KHACHHANG" ToRole="CT_DATXE" />
           <NavigationProperty Name="PHIEU_HUYDATXE" Relationship="Self.FK_PHIEUHUY_KHACHHANG" FromRole="KHACHHANG" ToRole="PHIEU_HUYDATXE" />
           <NavigationProperty Name="VI_VNS" Relationship="Self.FK_ViVNS_KHACHHANG" FromRole="KHACHHANG" ToRole="VI_VNS" />
+          <NavigationProperty Name="HOADONs" Relationship="DBCarBookingModel.fk_HoaDon_KhachHang" FromRole="KHACHHANG" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="KHUVUCLAMVIEC">
           <Key>
@@ -1057,7 +1076,23 @@
             <End Role="XE" EntitySet="XEs" />
             <End Role="TAIXE" EntitySet="TAIXEs" />
           </AssociationSet>
+          <AssociationSet Name="fk_HoaDon_KhachHang" Association="DBCarBookingModel.fk_HoaDon_KhachHang">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="fk_HoaDon_KhachHang">
+          <End Type="DBCarBookingModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+          <End Type="DBCarBookingModel.HOADON" Role="HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="KhID" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="KhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1142,6 +1177,7 @@
           <EntitySetMapping Name="HOADONs">
             <EntityTypeMapping TypeName="DBCarBookingModel.HOADON">
               <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="KhID" ColumnName="KhID" />
                 <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
                 <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
                 <ScalarProperty Name="DVuID" ColumnName="DVuID" />

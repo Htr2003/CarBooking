@@ -79,6 +79,7 @@
     <EntitySetMapping Name="HOADONs">
       <EntityTypeMapping TypeName="DBCarBookingModel.HOADON">
         <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="KhID" ColumnName="KhID" />
           <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
           <ScalarProperty Name="DatXeID" ColumnName="DatXeID" />
           <ScalarProperty Name="DVuID" ColumnName="DVuID" />

@@ -20,6 +20,7 @@ namespace CarBooking.Models
             this.CT_DATXE = new HashSet<CT_DATXE>();
             this.PHIEU_HUYDATXE = new HashSet<PHIEU_HUYDATXE>();
             this.VI_VNS = new HashSet<VI_VNS>();
+            this.HOADONs = new HashSet<HOADON>();
         }
     
         public int KhID { get; set; }
@@ -37,5 +38,7 @@ namespace CarBooking.Models
         public virtual ICollection<PHIEU_HUYDATXE> PHIEU_HUYDATXE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VI_VNS> VI_VNS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOADON> HOADONs { get; set; }
     }
 }

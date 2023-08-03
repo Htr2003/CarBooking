@@ -78,6 +78,7 @@
     <Property Name="TongTien" Type="int" />
     <Property Name="NgayXuat" Type="date" />
     <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="100" />
+    <Property Name="KhID" Type="int" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
@@ -326,6 +327,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_HoaDon_KhachHang">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="KhID" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="KhID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_HOADON_PDVu">
     <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
     <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
@@ -474,6 +487,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_HOADON_DATXE" Association="Self.FK_HOADON_DATXE">
       <End Role="DATXE" EntitySet="DATXE" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HoaDon_KhachHang" Association="Self.fk_HoaDon_KhachHang">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
       <End Role="HOADON" EntitySet="HOADON" />
     </AssociationSet>
     <AssociationSet Name="FK_HOADON_PDVu" Association="Self.FK_HOADON_PDVu">

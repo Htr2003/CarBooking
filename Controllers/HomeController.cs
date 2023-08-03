@@ -83,8 +83,9 @@ namespace CarBooking.Controllers
                 var checkTaiXe = database.TAIXEs.FirstOrDefault(t => t.TenDangNhap == acc.TenDangNhap && t.MatKhau == acc.MatKhau);
                 if (checkTaiXe != null)
                 {
+                    Session["taixeID"] = checkTaiXe.TaiXeID;
                     Session["TaiXeAccount"] = checkTaiXe.TenDangNhap;
-                    return RedirectToAction("Index", "TaiXe");
+                    return RedirectToAction("TaiXe", "Uses");
                 }
 
                 var checkNV = database.NHANVIENs.FirstOrDefault(n => n.TenDangNhap == acc.TenDangNhap && n.MatKhau == acc.MatKhau);
@@ -153,6 +154,9 @@ namespace CarBooking.Controllers
                 database.DIADIEMs.Add(Ddiem);
                 database.SaveChanges();
 
+                Session["diadiem"] = Ddiem.DDiemID;
+
+
                 int diadiemId = Ddiem.DDiemID;
 
                 var xeMapping = new Dictionary<string, int>
@@ -175,6 +179,8 @@ namespace CarBooking.Controllers
                     database.DATXEs.Add(datXe);
                     database.SaveChanges();
 
+                    
+                    Session["loaixe"] = datXe.XeID;
                     Session["DatXe"] = datXe.DatXeID;
 
                     return RedirectToAction("BookingInfo");
@@ -205,7 +211,7 @@ namespace CarBooking.Controllers
         }
 
         [HttpPost]
-        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx, CT_DATXE cd, HOADON hd)
+        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx, CT_DATXE cd, XE xe)
         {
             if (ModelState.IsValid)
             {
@@ -218,8 +224,37 @@ namespace CarBooking.Controllers
 
                 if (Session["Name"] != null)
                 {
-
+                    var currentKH = (int)Session["KhID"];
+                    cd.KhID = currentKH;
                 }
+
+                else
+                {
+                    database.KHACHHANGs.Add(kh);
+                    database.SaveChanges();
+                    cd.KhID = kh.KhID;
+                }
+
+                if (Session["DatXe"] != null && Session["loaixe"] != null && Session["diadiem"] != null)
+                {
+                    var datXeId = (int)Session["DatXe"];
+                    var d = database.DATXEs.Find(datXeId);
+
+                    var xeid = (int)Session["loaixe"];
+                    var x = database.XEs.Find(xeid);
+
+                    var ddiemID = (int)Session["diadiem"];
+                    var dd = database.DATXEs.Find(ddiemID);
+
+                    cd.DatXeID = d.DatXeID;
+                    cd.XeID = x.XeID;
+                    cd.DDiemID = dd.DDiemID;
+                }
+
+                database.CT_DATXE.Add(cd);
+                database.SaveChanges();
+
+                ViewBag.SuccessMessage = "Đặt xe thành công!";
             }
             return View();
         }

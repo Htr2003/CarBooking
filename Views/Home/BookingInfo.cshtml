@@ -11,7 +11,7 @@
         @using (Html.BeginForm("BookingInfo", "Home", FormMethod.Post))
         {
             <h2>Thông tin cá nhân</h2>
-
+            <p>@ViewBag.SuccessMessage</p>
             <div class="form-group">
                 <label for="hoTen">Họ và tên:</label>
                 <input type="text" id="hoTen" name="HoTen" required>
@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label for="ghiChu">Ghi chú:</label>
-                <textarea id="ghiChu" name="ghiChu" rows="3"></textarea>
+                <textarea id="ghiChu" name="GhiChu" rows="3"></textarea>
             </div>
 
             <div class="form-group">

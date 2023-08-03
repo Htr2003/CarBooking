@@ -317,6 +317,7 @@
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\FormCarBooking.cshtml" />
     <Content Include="Views\Home\BookingInfo.cshtml" />
+    <Content Include="Views\Shared\_TaiXeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
