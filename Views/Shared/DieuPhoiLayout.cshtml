@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/TaiXeStyle.css" rel="stylesheet"/>
+    <link href="~/Content/TaiXeStyle.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-    
+
     <style>
         #nd {
             font-size: 20px;
-            margin-right:20px;
+            margin-right: 20px;
         }
     </style>
 </head>
@@ -19,20 +19,22 @@
     <div class="bs_header ">
         <nav class="navbar navbar-expand-sm bg-white navbar-light">
             <div class="container-fluid">
-                <a href="~/Users/TaiXe" class="navbar-brand"><img class="navbar-brand" src="~/image/logo.png" alt="Alternate Text" 
-                            style="width: 80px; height:80px; margin-left:200px; margin-right:300px;" /></a>
+                <a href="~/User/TaiXe" class="navbar-brand">
+                    <img class="navbar-brand" src="~/image/logo.png" alt="Alternate Text"
+                         style="width: 80px; height:80px; margin-left:200px; margin-right:300px;" />
+                </a>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav nav-pills">
                         <li class="nav-item col-lg-4 col-3">
-                            <a id="nd" class="nav-link" href="~/Users/DanhSachCuocXe"><b>Danh sách cuốc xe</b></a>
+                            <a id="nd" class="nav-link" href="#"><b>Danh sách tài xế</b></a>
                         </li>
                         <li class="nav-item col-lg-4 col-3">
-                            <a id="nd" class="nav-link" href="~/Users/LichSuCuocXe"><b>Lịch sử cuốc xe</b></a>
+                            <a id="nd" class="nav-link" href="#"><b>Danh sách khách hàng</b></a>
                         </li>
                         <li class="nav-item col-lg-4 col-3">
-                            <a id="nd" class="nav-link" href="#"><b>Yêu cầu hổ trợ</b></a>
+                            <a id="nd" class="nav-link" href="#"><b>lịch sử cuốc xe</b></a>
                         </li>
-                        @if (Session["TaiXe"] == null)
+                        @if (Session["NameNV"] == null)
                         {
                             <li class="nav-link dropdown col-lg-4 col-3">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="~/Home/Login"><b>Tài khoản</b></a>
@@ -45,9 +47,8 @@
                         else
                         {
                             <li style="display: inline-block; margin: auto; font-size: 20px; " class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"><b>@Session["TaiXe"]</b></a>
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"><b>@Session["NameNV"]</b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="@Url.Action("#", "#", new { TaiXeID = Session["taixeID"]})">Thông tin tài khoản</a></li>
                                     <li><a class="dropdown-item" href="~/Home/Logout">Đăng xuất</a></li>
                                 </ul>
                             </li>

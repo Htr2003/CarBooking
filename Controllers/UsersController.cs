@@ -20,9 +20,17 @@ namespace CarBooking.Controllers
             var VaiTro = Session["VaiTro"]?.ToString();
 
             if (VaiTro == "KeToan")
+            {
+                
+
                 return RedirectToAction("KeToan", "Users");
+            }
+                
             else if (VaiTro == "DieuPhoi")
-                return RedirectToAction("NVDieuPhoi", "Users");
+            {
+                return RedirectToAction("KeToan", "Users");
+            }
+                
 
             else
             {
@@ -48,10 +56,8 @@ namespace CarBooking.Controllers
         [HttpGet]
         public ActionResult DanhSachCuocXe()
         {
-            var cuocXeList = database.CT_DATXE.Include("KHACHHANG") .Include("DIADIEM").Include("XE").ToList();
-
-            var driversList = database.TAIXEs.ToList();
-            ViewBag.Drivers = driversList;
+            var cuocXeList = database.CT_DATXE.Include("KHACHHANG") .Include("DIADIEM").Include("XE")
+                .OrderByDescending(x => x.DatXeID).ToList();
 
             return View(cuocXeList);
         }

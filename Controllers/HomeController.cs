@@ -89,11 +89,13 @@ namespace CarBooking.Controllers
                     return RedirectToAction("TaiXe", "Users");
                 }
 
-                var checkNV = database.NHANVIENs.FirstOrDefault(n => n.TenDangNhap == acc.TenDangNhap && n.MatKhau == acc.MatKhau);
+                var checkNV = database.NHANVIENs.FirstOrDefault(n => n.TenDangNhap == acc.TenDangNhap && n.MatKhau == acc.MatKhau && n.VaiTro == "DieuPhoi");
                 if (checkNV != null)
                 {
+                    Session["NameNV"] = checkNV.HoTen;
+                    Session["NVID"] = checkNV.NhanVienID;
                     Session["VaiTro"] = checkNV.VaiTro;
-                    return RedirectToAction("Index", checkNV.VaiTro);
+                    return RedirectToAction("Index", "NVDieuPhoi");
                 }
 
                 var check = database.KHACHHANGs.Where(k => k.TenDangNhap.Equals(acc.TenDangNhap) && k.MatKhau.Equals(acc.MatKhau)).FirstOrDefault();
@@ -261,6 +263,29 @@ namespace CarBooking.Controllers
                 return View("Notify");
             }
             return View();
+        }
+
+        public ActionResult LichSu()
+        {
+            var lichSuCuocXe = database.CT_DATXE.Include("TAIXE").Include("DIADIEM")
+                .Include("XE").OrderByDescending(x => x.DatXeID).ToList();
+
+            return View(lichSuCuocXe);
+        }
+
+        public ActionResult HuyDatXe()
+        {
+            var datxeID = (int)Session["ctdatxe"];
+            var datxe = database.CT_DATXE.Find(datxeID);
+
+            if (datxe != null && datxe.TaiXeID == null)
+            {
+
+                datxe.TrangThai = "Đã hủy".ToString();
+                database.SaveChanges();
+            }
+
+            return RedirectToAction("LichSu");
         }
 
         public ActionResult Notify()

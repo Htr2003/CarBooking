@@ -17,8 +17,10 @@
                 <th>Điểm xuất phát</th>
                 <th>Điểm đến</th>
                 <th>Thời gian</th>
-                <th>Loại xe</th>
+                <th>Loại xe</th>    
+                <th>Ghi chú</th>
                 <th>Trạng thái</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +33,7 @@
                     <td>@Html.DisplayFor(model => item.DIADIEM.DiemDen)</td>
                     <td>@Html.DisplayFor(model => item.DATXE.ThoiGian)</td>
                     <td>@Html.DisplayFor(model => item.XE.LoaiXe)</td>
+                    <td>@Html.DisplayFor(model => item.GhiChu)</td>
                     <td>@Html.DisplayFor(model => item.TrangThai)</td>
                     <td>
                         @if (item.TrangThai == "Đang chờ")

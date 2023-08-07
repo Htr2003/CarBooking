@@ -139,6 +139,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NVDieuPhoiController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -323,6 +324,13 @@
     <Content Include="Views\Users\DanhSachCuocXe.cshtml" />
     <Content Include="Views\Home\Notify.cshtml" />
     <Content Include="Views\Users\LichSuCuocXe.cshtml" />
+    <Content Include="Views\Shared\DieuPhoiLayout.cshtml" />
+    <Content Include="Views\NVDieuPhoi\Create.cshtml" />
+    <Content Include="Views\NVDieuPhoi\Delete.cshtml" />
+    <Content Include="Views\NVDieuPhoi\Details.cshtml" />
+    <Content Include="Views\NVDieuPhoi\Edit.cshtml" />
+    <Content Include="Views\NVDieuPhoi\Index.cshtml" />
+    <Content Include="Views\Home\LichSu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

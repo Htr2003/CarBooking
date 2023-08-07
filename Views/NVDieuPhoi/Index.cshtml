@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CarBooking.Models.CT_DATXE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/DieuPhoiLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATXE.DatXeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIADIEM.DiemXuatPhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DICHVU.TenDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAIXE.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.XE.TenXe)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATXE.DatXeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIADIEM.DiemXuatPhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DICHVU.TenDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAIXE.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.XE.TenXe)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CT_DatXeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CT_DatXeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CT_DatXeID })
+        </td>
+    </tr>
+}
+
+</table>

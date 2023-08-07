@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CarBooking.Models.CT_DATXE>
+
+@{
+    ViewBag.Title = "LichSu";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Lịch Sử Đặt Xe</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Điểm Xuất Phát</th>
+                <th>Điểm Đến</th>
+                <th>Thời Gian</th>
+                <th>Loại xe</th>
+                <th>Trạng thái</th>
+                <th>Tài Xế</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.DIADIEM.DiemXuatPhat)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DIADIEM.DiemDen)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DATXE.ThoiGian)</td>
+                    <td>@Html.DisplayFor(modelItem => item.XE.LoaiXe)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
+                    @if (item.TrangThai == "Đã hủy")
+                    {
+                        <td>Đã hủy</td>
+                    }
+                    else if (item.TaiXeID == null)
+                    {
+                        <td>Đang tìm</td>
+                        <td><button class="btn btn-danger" onclick="HuyDatXe(@item.DatXeID)">Hủy</button></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.TAIXE.HoTen)</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script>
+        function HuyDatXe(datxeID) {
+            if (confirm('Bạn có chắc chắn muốn hủy đặt xe này?')) {
+                window.location.href = '@Url.Action("HuyDatXe", "Home")/' + datxeID;
+                location.reload();
+            }
+        }
+    </script>
+}
