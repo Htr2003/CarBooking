@@ -214,7 +214,7 @@ namespace CarBooking.Controllers
         }
 
         [HttpPost]
-        public ActionResult BookingInfo(KHACHHANG kh, DATXE dx, CT_DATXE cd, XE xe)
+        public ActionResult BookingInfo(KHACHHANG kh, CT_DATXE cd)
         {
             if (ModelState.IsValid)
             {
