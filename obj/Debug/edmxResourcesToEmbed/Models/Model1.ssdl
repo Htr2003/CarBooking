@@ -58,6 +58,8 @@
     <Property Name="DDiemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DiemXuatPhat" Type="nvarchar" MaxLength="150" />
     <Property Name="DiemDen" Type="nvarchar" MaxLength="150" />
+    <Property Name="QuanDi" Type="nvarchar" MaxLength="30" />
+    <Property Name="QuanDen" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="DICHVU">
     <Key>

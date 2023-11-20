@@ -76,6 +76,8 @@
     <Property Name="DiemDen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_DIADIEM" FromRole="DIADIEM" ToRole="CT_DATXE" />
     <NavigationProperty Name="DATXEs" Relationship="Self.FK_DATXE_DIADIEM" FromRole="DIADIEM" ToRole="DATXE" />
+    <Property Name="QuanDi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="QuanDen" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DICHVU">
     <Key>

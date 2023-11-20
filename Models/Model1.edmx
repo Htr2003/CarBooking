@@ -63,6 +63,8 @@
           <Property Name="DDiemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DiemXuatPhat" Type="nvarchar" MaxLength="150" />
           <Property Name="DiemDen" Type="nvarchar" MaxLength="150" />
+          <Property Name="QuanDi" Type="nvarchar" MaxLength="30" />
+          <Property Name="QuanDen" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -608,6 +610,8 @@
           <Property Name="DiemDen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CT_DATXE" Relationship="Self.FK_CTDATXE_DIADIEM" FromRole="DIADIEM" ToRole="CT_DATXE" />
           <NavigationProperty Name="DATXEs" Relationship="Self.FK_DATXE_DIADIEM" FromRole="DIADIEM" ToRole="DATXE" />
+          <Property Name="QuanDi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="QuanDen" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -1160,6 +1164,8 @@
           <EntitySetMapping Name="DIADIEMs">
             <EntityTypeMapping TypeName="DBCarBookingModel.DIADIEM">
               <MappingFragment StoreEntitySet="DIADIEM">
+                <ScalarProperty Name="QuanDen" ColumnName="QuanDen" />
+                <ScalarProperty Name="QuanDi" ColumnName="QuanDi" />
                 <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />
                 <ScalarProperty Name="DiemXuatPhat" ColumnName="DiemXuatPhat" />
                 <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />

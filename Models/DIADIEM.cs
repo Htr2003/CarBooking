@@ -24,6 +24,8 @@ namespace CarBooking.Models
         public int DDiemID { get; set; }
         public string DiemXuatPhat { get; set; }
         public string DiemDen { get; set; }
+        public string QuanDi { get; set; }
+        public string QuanDen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DATXE> CT_DATXE { get; set; }
