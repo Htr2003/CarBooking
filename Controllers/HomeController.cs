@@ -6,12 +6,39 @@ using System.Data;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
+using Newtonsoft.Json;
 
 namespace CarBooking.Controllers
 {
     public class HomeController : Controller
     {
+        
         DBCarBookingEntities database = new DBCarBookingEntities();
+
+        private static List<dynamic> TinhGiaTien;
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+
+            // Nếu chưa có dữ liệu, thực hiện đọc dữ liệu
+            if (TinhGiaTien == null)
+            {
+                string jsonFilePath = Server.MapPath("~/App_Data/TinhGiaTien.json");
+                string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
+                TinhGiaTien = JsonConvert.DeserializeObject<List<dynamic>>(jsonContent);
+            }
+        }
+        // Trong constructor hoặc một phương thức khác
+        private double TinhTongTien(string quanDi, string quanDen)
+        {
+            // Tìm giá tiền tương ứng với cặp quận đi và quận đến
+            var giaTienInfo = TinhGiaTien.FirstOrDefault(info =>
+                info.QuanDi == quanDi && info.QuanDen == quanDen);
+
+            // Nếu tìm thấy thông tin giá tiền, trả về giá tiền; ngược lại, trả về một giá trị mặc định (ví dụ: 0)
+            return giaTienInfo != null ? giaTienInfo.GiaTien : 0;
+        }
 
         [HttpGet]
         public ActionResult Register()
@@ -144,8 +171,9 @@ namespace CarBooking.Controllers
         }
 
         [HttpPost]
-        public ActionResult FormCarBooking(DIADIEM Ddiem, XE xe, DATXE dx)
+        public ActionResult FormCarBooking(DIADIEM Ddiem, XE xe, DATXE dx, string QuanDiQuyen, string QuanDenQuyen)
         {
+
             if (ModelState.IsValid)
             {
                 if (string.IsNullOrEmpty(Ddiem.DiemXuatPhat))
@@ -153,7 +181,16 @@ namespace CarBooking.Controllers
 
                 if (string.IsNullOrEmpty(Ddiem.DiemDen))
                     ModelState.AddModelError(string.Empty, " khong duoc de trong diem den");
-            
+
+                Ddiem.QuanDi = QuanDiQuyen;
+                Ddiem.QuanDen = QuanDenQuyen;
+
+
+                double giaTien = TinhTongTien(QuanDiQuyen, QuanDenQuyen);
+
+                // Gán giá tiền vào đối tượng DIADIEM
+                Ddiem.GiaTien = giaTien;
+
                 database.DIADIEMs.Add(Ddiem);
                 database.SaveChanges();
 
@@ -249,9 +286,11 @@ namespace CarBooking.Controllers
                     var ddiemID = (int)Session["diadiem"];
                     var dd = database.DATXEs.Find(ddiemID);
 
+                    
                     cd.DatXeID = d.DatXeID;
                     cd.XeID = x.XeID;
                     cd.DDiemID = dd.DDiemID;
+                    cd.TongTien = (int?)dd.DIADIEM.GiaTien;
                     cd.TrangThai = "Đang chờ".ToString();
                 }
 

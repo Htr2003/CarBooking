@@ -33,9 +33,9 @@
           <Property Name="DDiemID" Type="int" />
           <Property Name="KhID" Type="int" />
           <Property Name="DVuID" Type="int" />
-          <Property Name="TongTien" Type="int" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="30" />
+          <Property Name="TongTien" Type="float" />
         </EntityType>
         <EntityType Name="DANHGIA_PHANHOI">
           <Key>
@@ -65,6 +65,7 @@
           <Property Name="DiemDen" Type="nvarchar" MaxLength="150" />
           <Property Name="QuanDi" Type="nvarchar" MaxLength="30" />
           <Property Name="QuanDen" Type="nvarchar" MaxLength="30" />
+          <Property Name="GiaTien" Type="float" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -612,6 +613,7 @@
           <NavigationProperty Name="DATXEs" Relationship="Self.FK_DATXE_DIADIEM" FromRole="DIADIEM" ToRole="DATXE" />
           <Property Name="QuanDi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="QuanDen" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GiaTien" Type="Double" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -1164,6 +1166,7 @@
           <EntitySetMapping Name="DIADIEMs">
             <EntityTypeMapping TypeName="DBCarBookingModel.DIADIEM">
               <MappingFragment StoreEntitySet="DIADIEM">
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
                 <ScalarProperty Name="QuanDen" ColumnName="QuanDen" />
                 <ScalarProperty Name="QuanDi" ColumnName="QuanDi" />
                 <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />

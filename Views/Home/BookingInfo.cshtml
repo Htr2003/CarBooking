@@ -70,12 +70,17 @@
 
             <div class="form-group">
                 <label for="datetime">Thời gian:</label>
-                <input  value="@Html.DisplayFor(model => model.ThoiGian)" readonly>
+                <input value="@Html.DisplayFor(model => model.ThoiGian)" readonly>
             </div>
 
             <div class="form-group">
                 <label for="carType">Loại xe:</label>
                 <input value="@Html.DisplayFor(model => model.XE.LoaiXe)" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="from">Giá tiền: </label>
+                <input value="@string.Format("{0:N3}", Model.DIADIEM.GiaTien)" readonly>
             </div>
         }
     </div>

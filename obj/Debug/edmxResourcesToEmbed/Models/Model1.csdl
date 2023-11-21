@@ -78,6 +78,7 @@
     <NavigationProperty Name="DATXEs" Relationship="Self.FK_DATXE_DIADIEM" FromRole="DIADIEM" ToRole="DATXE" />
     <Property Name="QuanDi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="QuanDen" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GiaTien" Type="Double" />
   </EntityType>
   <EntityType Name="DICHVU">
     <Key>

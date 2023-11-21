@@ -60,6 +60,7 @@
     <EntitySetMapping Name="DIADIEMs">
       <EntityTypeMapping TypeName="DBCarBookingModel.DIADIEM">
         <MappingFragment StoreEntitySet="DIADIEM">
+          <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
           <ScalarProperty Name="QuanDen" ColumnName="QuanDen" />
           <ScalarProperty Name="QuanDi" ColumnName="QuanDi" />
           <ScalarProperty Name="DDiemID" ColumnName="DDiemID" />

@@ -1,3 +1,5 @@
+C:\Users\htr\VisualStudio\CarBooking\CarBooking\obj\Debug\CarBooking.csproj.AssemblyReference.cache
+C:\Users\htr\VisualStudio\CarBooking\CarBooking\obj\Debug\CarBooking.csproj.CoreCompileInputs.cache
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\bin\CarBooking.dll.config
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\bin\CarBooking.dll
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\bin\CarBooking.pdb
@@ -76,8 +78,6 @@ C:\Users\htr\VisualStudio\CarBooking\CarBooking\bin\System.Web.WebPages.Razor.xm
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\bin\Newtonsoft.Json.xml
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\bin\Antlr3.Runtime.pdb
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\htr\VisualStudio\CarBooking\CarBooking\obj\Debug\CarBooking.csproj.AssemblyReference.cache
-C:\Users\htr\VisualStudio\CarBooking\CarBooking\obj\Debug\CarBooking.csproj.CoreCompileInputs.cache
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\obj\Debug\CarBooking.csproj.CopyComplete
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\obj\Debug\CarBooking.dll
 C:\Users\htr\VisualStudio\CarBooking\CarBooking\obj\Debug\CarBooking.pdb
